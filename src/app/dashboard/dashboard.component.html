@@ -1,0 +1,165 @@
+<div class="p-2.5">
+  <div class="flex flex-row mb-1">
+    <div class="w-[50%]">
+      <b>My race</b>
+      <div class="flex flex-row gap-1">
+        <img class="race-button" [ngClass]="{'fade': raceA != Race.Terran }" src="assets/TerranIcon.png" (click)="onRaceAClick(Race.Terran)"/>
+        <img class="race-button" [ngClass]="{'fade': raceA != Race.Zerg }" src="assets/ZergIcon.png" (click)="onRaceAClick(Race.Zerg)"/>
+        <img class="race-button" [ngClass]="{'fade': raceA != Race.Protoss }" src="assets/ProtossIcon.png" (click)="onRaceAClick(Race.Protoss)"/>
+      </div>
+    </div>
+    <img *ngIf="!darkMode" matTooltip="Dark mode" class="race-button mt-4" src="assets/moon-4-64.png" (click)="darkModeEmitter.emit()"/>
+    <img *ngIf="darkMode" matTooltip="Light mode" class="race-button mt-4" src="assets/sun-3-64.png" (click)="darkModeEmitter.emit()"/>
+    <div class="w-[50%]">
+      <div class="flex flex-row justify-end">
+        <b>Opponent race</b>
+      </div>
+      <div class="flex flex-row justify-end gap-1">
+        <img class="race-button" [ngClass]="{'fade': raceB != Race.Terran }" src="assets/TerranIcon.png" (click)="onRaceBClick(Race.Terran)"/>
+        <img class="race-button" [ngClass]="{'fade': raceB != Race.Zerg }" src="assets/ZergIcon.png" (click)="onRaceBClick(Race.Zerg)"/>
+        <img class="race-button" [ngClass]="{'fade': raceB != Race.Protoss }" src="assets/ProtossIcon.png" (click)="onRaceBClick(Race.Protoss)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row mb-1.5">
+    <div class="w-[50%]">
+      <b>My upgrades</b>
+      <div class="flex flex-row flex-wrap gap-1">
+        <img matTooltip="Attack 1" [ngClass]="{'fade': unitAUpgrades.weapons != 1 }" src="assets/Infantry_weapons_1.gif" (click)="onWeaponClick(1, unitAUpgrades)"/>
+        <img matTooltip="Attack 2" [ngClass]="{'fade': unitAUpgrades.weapons != 2 }" src="assets/Infantry_weapons_2.gif" (click)="onWeaponClick(2, unitAUpgrades)"/>
+        <img matTooltip="Attack 3" [ngClass]="{'fade': unitAUpgrades.weapons != 3 }" src="assets/Infantry_weapons_3.gif" (click)="onWeaponClick(3, unitAUpgrades)"/>
+        <img matTooltip="Armor 1" [ngClass]="{'fade': unitAUpgrades.armor != 1 }" src="assets/Ground_carapace_1.gif" (click)="onArmorClick(1, unitAUpgrades)"/>
+        <img matTooltip="Armor 2" [ngClass]="{'fade': unitAUpgrades.armor != 2 }" src="assets/Ground_carapace_2.gif" (click)="onArmorClick(2, unitAUpgrades)"/>
+        <img matTooltip="Armor 3" [ngClass]="{'fade': unitAUpgrades.armor != 3 }" src="assets/Ground_carapace_3.gif" (click)="onArmorClick(3, unitAUpgrades)"/>
+        <img matTooltip="Shields 1" [ngClass]="{'fade': unitAUpgrades.shields != 1 }" src="assets/Shields_1.gif" (click)="onShieldsClick(1, unitAUpgrades)"/>
+        <img matTooltip="Shields 2" [ngClass]="{'fade': unitAUpgrades.shields != 2 }" src="assets/Shields_2.gif" (click)="onShieldsClick(2, unitAUpgrades)"/>
+        <img matTooltip="Shields 3" [ngClass]="{'fade': unitAUpgrades.shields != 3 }" src="assets/Shields_3.gif" (click)="onShieldsClick(3, unitAUpgrades)"/>
+        <img matTooltip="{{'Combat shields\nMarine HP +10'}}" [ngClass]="{'fade': !unitAUpgrades.combatShields }" src="assets/60px-Combat_Shield.png" (click)="onCombatShieldsAClick()"/>
+        <img matTooltip="{{'Chitinous plating\nUltralisk armor +2'}}" [ngClass]="{'fade': !unitAUpgrades.chitinousPlating }" src="assets/Chitinous_Plating.gif" (click)="onChitinousPlatingAClick()"/>
+      </div>
+    </div>
+    <div class="w-[50%]">
+      <div class="flex flex-row justify-end">
+        <b>Opponent upgrades</b>
+      </div>
+      <div class="flex flex-row flex-wrap justify-end gap-1">
+        <img matTooltip="Attack 1" [ngClass]="{'fade': unitBUpgrades.weapons != 1 }" src="assets/Infantry_weapons_1.gif" (click)="onWeaponClick(1, unitBUpgrades)"/>
+        <img matTooltip="Attack 2" [ngClass]="{'fade': unitBUpgrades.weapons != 2 }" src="assets/Infantry_weapons_2.gif" (click)="onWeaponClick(2, unitBUpgrades)"/>
+        <img matTooltip="Attack 3" [ngClass]="{'fade': unitBUpgrades.weapons != 3 }" src="assets/Infantry_weapons_3.gif" (click)="onWeaponClick(3, unitBUpgrades)"/>
+        <img matTooltip="Armor 1" [ngClass]="{'fade': unitBUpgrades.armor != 1 }" src="assets/Ground_carapace_1.gif" (click)="onArmorClick(1, unitBUpgrades)"/>
+        <img matTooltip="Armor 2" [ngClass]="{'fade': unitBUpgrades.armor != 2 }" src="assets/Ground_carapace_2.gif" (click)="onArmorClick(2, unitBUpgrades)"/>
+        <img matTooltip="Armor 3" [ngClass]="{'fade': unitBUpgrades.armor != 3 }" src="assets/Ground_carapace_3.gif" (click)="onArmorClick(3, unitBUpgrades)"/>
+        <img matTooltip="Shields 1" [ngClass]="{'fade': unitBUpgrades.shields != 1 }" src="assets/Shields_1.gif" (click)="onShieldsClick(1, unitBUpgrades)"/>
+        <img matTooltip="Shields 2" [ngClass]="{'fade': unitBUpgrades.shields != 2 }" src="assets/Shields_2.gif" (click)="onShieldsClick(2, unitBUpgrades)"/>
+        <img matTooltip="Shields 3" [ngClass]="{'fade': unitBUpgrades.shields != 3 }" src="assets/Shields_3.gif" (click)="onShieldsClick(3, unitBUpgrades)"/>
+        <img matTooltip="{{'Combat shields\nMarine HP +10'}}" [ngClass]="{'fade': !unitBUpgrades.combatShields }" src="assets/60px-Combat_Shield.png" (click)="onCombatShieldsAClick()"/>
+        <img matTooltip="{{'Chitinous plating\nUltralisk armor +2'}}" [ngClass]="{'fade': !unitBUpgrades.chitinousPlating }" src="assets/Chitinous_Plating.gif" (click)="onChitinousPlatingAClick()"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row mb-1.5">
+    <div class="w-[50%]">
+      <b>Units</b>
+      <div class="flex flex-row flex-wrap gap-1">
+        <img *ngFor="let unit of getUnitsOfRace(raceA)" class="race-button" matTooltip="{{unit.config.name}}"
+             [ngClass]="{'fade': !unit.enabledForA }" src="assets/{{unit.config.name}}.png" (click)="onToggleUnitA(unit)"/>
+      </div>
+    </div>
+    <div class="w-[50%]">
+      <div class="flex flex-row justify-end">
+        <b>Opponent units</b>
+      </div>
+      <div class="flex flex-row flex-wrap justify-end gap-1">
+        <img *ngFor="let unit of getUnitsOfRace(raceB)" class="race-button" matTooltip="{{unit.config.name}}"
+             [ngClass]="{'fade': !unit.enabledForB }" src="assets/{{unit.config.name}}.png" (click)="onToggleUnitB(unit)"/>
+      </div>
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="unit1Bar">
+      <th mat-header-cell *matHeaderCellDef>Hits to kill opponent</th>
+      <td mat-cell *matCellDef="let unitComparison">
+        <div class="flex flex-row flex-1 h-5 gap-[1px]">
+          <div *ngFor="let _ of [].constructor(getBarCount(unitComparison)).fill(0); let i = index;"
+               class="w-full h-full neutral-bg text-center"
+                [ngClass]="{
+                  'bad-bg opacity-80': i >= unitComparison.unit1RawHits && i <= unitComparison.unit1UpgradedHits,
+                  'good-bg opacity-80': i < unitComparison.unit1RawHits && i >= unitComparison.unit1UpgradedHits
+                }">
+            <ng-container *ngIf="i < unitComparison.unit1RawHits && i >= unitComparison.unit1UpgradedHits">-</ng-container>
+            <ng-container *ngIf="i >= unitComparison.unit1RawHits && i <= unitComparison.unit1UpgradedHits">+</ng-container>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unit1Name">
+      <th class="right" mat-header-cell *matHeaderCellDef>My unit</th>
+      <td class="right" mat-cell *matCellDef="let unitComparison">
+        <div class="flex flex-row justify-end items-center">
+          <div>{{ unitComparison.unit1.config.name }}</div>
+          <img matTooltip="{{unitComparison.unit1.getTooltip(unitAUpgrades)}}" class="w-10" src="assets/{{unitComparison.unit1.config.name}}.png" />
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unit1Hits">
+      <th class="right" mat-header-cell *matHeaderCellDef>Hits</th>
+      <td class="right" mat-cell *matCellDef="let unitComparison">
+        <ng-container *ngIf="unitComparison.unit1UpgradedHits < unitComparison.unit1RawHits">
+          <b class="good-text">{{unitComparison.unit1UpgradedHits - unitComparison.unit1RawHits}}</b>
+        </ng-container>
+        <ng-container *ngIf="unitComparison.unit1UpgradedHits > unitComparison.unit1RawHits">
+          <b class="bad-text">+{{unitComparison.unit1UpgradedHits - unitComparison.unit1RawHits}}</b>
+        </ng-container>
+        <div class="inline-block w-10">{{ unitComparison.unit1UpgradedHits }}</div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unit2Hits">
+      <th mat-header-cell *matHeaderCellDef>Hits</th>
+      <td mat-cell *matCellDef="let unitComparison">
+        {{ unitComparison.unit2UpgradedHits }}
+        <ng-container *ngIf="unitComparison.unit2UpgradedHits < unitComparison.unit2RawHits">
+          <b class="bad-text">{{unitComparison.unit2UpgradedHits - unitComparison.unit2RawHits}}</b>
+        </ng-container>
+        <ng-container *ngIf="unitComparison.unit2UpgradedHits > unitComparison.unit2RawHits">
+          <b class="good-text">+{{unitComparison.unit2UpgradedHits - unitComparison.unit2RawHits}}</b>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unit2Name">
+      <th mat-header-cell *matHeaderCellDef>Opponent unit</th>
+      <td mat-cell *matCellDef="let unitComparison">
+        <div class="flex flex-row justify-start items-center">
+          <img matTooltip="{{unitComparison.unit2.getTooltip(unitBUpgrades)}}" class="w-10" src="assets/{{unitComparison.unit2.config.name}}.png" />
+          <div>{{ unitComparison.unit2.config.name }}</div>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unit2Bar">
+      <th class="right" mat-header-cell *matHeaderCellDef>Hits to kill my unit</th>
+      <td mat-cell *matCellDef="let unitComparison">
+        <div class="flex flex-row-reverse flex-1 h-5 gap-[1px]">
+          <div *ngFor="let _ of [].constructor(getBarCount2(unitComparison)).fill(0); let i = index;"
+               class="w-full h-full neutral-bg text-center"
+               [ngClass]="{
+                  'good-bg opacity-80': i >= unitComparison.unit2RawHits && i <= unitComparison.unit2UpgradedHits,
+                  'bad-bg opacity-80': i < unitComparison.unit2RawHits && i >= unitComparison.unit2UpgradedHits
+                }">
+            <ng-container *ngIf="i < unitComparison.unit2RawHits && i >= unitComparison.unit2UpgradedHits">-</ng-container>
+            <ng-container *ngIf="i >= unitComparison.unit2RawHits && i <= unitComparison.unit2UpgradedHits">+</ng-container>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

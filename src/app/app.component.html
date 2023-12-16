@@ -1,0 +1,3 @@
+<div class="app-container w-full h-full min-w-[803px]" [ngClass]="{'dark-theme': darkMode, 'light-theme': !darkMode}">
+  <app-dashboard (darkModeEmitter)="darkMode = !darkMode" [darkMode]="darkMode"></app-dashboard>
+</div>

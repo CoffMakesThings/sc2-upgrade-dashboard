@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+@tailwind components;
+@tailwind utilities;
+
+$background-color: whitesmoke;
+$text-color: black;
+$red: #B81800;
+$green: #16CE00;
+
+.light-theme {
+  --background-color: whitesmoke;
+  --text-color: black;
+  --red: #B81800;
+  --green: #16CE00;
+}
+
+.dark-theme {
+  --background-color: #0a0a0a;
+  --text-color: gainsboro;
+  --red: #B81800;
+  --green: #16CE00;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.cdk-overlay-container, .cdk-global-overlay-wrapper {
+  white-space: pre-line;
+}
