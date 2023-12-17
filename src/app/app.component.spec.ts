@@ -4,6 +4,15 @@ import { secondaryUnitConfigs, unitConfigs } from "./units.config";
 import { Unit } from "./unit";
 import { Upgrades } from "./app.types";
 
+const baseUpgrades: Upgrades = {
+  armor: 0,
+  shields: 0,
+  weapons: 0,
+  combatShields: false,
+  chitinousPlating: false,
+  infernalPreigniter: false
+}
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -51,23 +60,8 @@ describe('AppComponent', () => {
     const queenAA: Unit = secondaryUnits.find(u => u.config.name === 'Queen')!;
     const colossus: Unit = units.find(u => u.config.name === 'Colossus')!;
 
-    const upgradesA: Upgrades = {
-      armor: 0,
-      shields: 0,
-      weapons: 0,
-      combatShields: false,
-      chitinousPlating: false,
-      infernalPreigniter: false
-    }
-
-    const upgradesB: Upgrades = {
-      armor: 0,
-      shields: 0,
-      weapons: 0,
-      combatShields: false,
-      chitinousPlating: false,
-      infernalPreigniter: false
-    }
+    let upgradesA: Upgrades = JSON.parse(JSON.stringify(baseUpgrades));
+    let upgradesB: Upgrades = JSON.parse(JSON.stringify(baseUpgrades));
 
     // Hydra on Marine
     expect(hydralisk.getRawHits(marine)).toEqual(4);
@@ -204,10 +198,7 @@ describe('AppComponent', () => {
     upgradesB.armor = 3;
     upgradesA.infernalPreigniter = true;
     expect(hellbat.getUpgradedHits(zergling, upgradesA, upgradesB)).toEqual(2);
-    upgradesA.weapons = 0;
-    upgradesA.armor = 0;
-    upgradesB.weapons = 0;
-    upgradesB.armor = 0;
-    upgradesA.infernalPreigniter = false;
+    upgradesA = JSON.parse(JSON.stringify(baseUpgrades));
+    upgradesB = JSON.parse(JSON.stringify(baseUpgrades));
   });
 });
