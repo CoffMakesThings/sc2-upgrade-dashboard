@@ -14,6 +14,8 @@ export interface UnitConfig {
   bonusTag?: Tag;
   bonusDamage?: number;
   bonusDamagePerUpgrade?: number;
+  targetsGroundOnly?: boolean;
+  targetsAirOnly?: boolean;
 }
 
 export interface UnitComparison {
@@ -47,5 +49,7 @@ export enum Race {
 export enum Tag {
   Armored,
   Light,
-  Biological
+  Biological,
+  Air,
+  Massive
 }

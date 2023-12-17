@@ -83,25 +83,26 @@
       <th mat-header-cell *matHeaderCellDef>Hits to kill opponent</th>
       <td mat-cell *matCellDef="let unitComparison">
         <div class="flex flex-row flex-1 h-5 gap-[1px]">
-          <div *ngFor="let _ of [].constructor(getBarCount(unitComparison)).fill(0); let i = index;"
-               class="w-full h-full neutral-bg text-center"
-                [ngClass]="{
+          <ng-container *ngIf="getBarCount(unitComparison) < 50">
+            <div *ngFor="let _ of [].constructor(getBarCount(unitComparison)).fill(0); let i = index;"
+                 class="w-full h-full neutral-bg text-center"
+                 [ngClass]="{
                   'bad-bg opacity-80': i >= unitComparison.unit1RawHits && i <= unitComparison.unit1UpgradedHits,
                   'good-bg opacity-80': i < unitComparison.unit1RawHits && i >= unitComparison.unit1UpgradedHits
                 }">
-            <ng-container *ngIf="i < unitComparison.unit1RawHits && i >= unitComparison.unit1UpgradedHits">-</ng-container>
-            <ng-container *ngIf="i >= unitComparison.unit1RawHits && i <= unitComparison.unit1UpgradedHits">+</ng-container>
-          </div>
-        </div>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="unit1Name">
-      <th class="right" mat-header-cell *matHeaderCellDef>My unit</th>
-      <td class="right" mat-cell *matCellDef="let unitComparison">
-        <div class="flex flex-row justify-end items-center">
-          <div>{{ unitComparison.unit1.config.name }}</div>
-          <img matTooltip="{{unitComparison.unit1.getTooltip(unitAUpgrades)}}" class="w-10" src="assets/{{unitComparison.unit1.config.name}}.png" />
+              <ng-container *ngIf="i < unitComparison.unit1RawHits && i >= unitComparison.unit1UpgradedHits"></ng-container>
+              <ng-container *ngIf="i >= unitComparison.unit1RawHits && i <= unitComparison.unit1UpgradedHits"></ng-container>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="getBarCount(unitComparison) >= 50">
+            <div style="width: {{ getRatio(unitComparison) }}%" class="h-full neutral-bg text-center"></div>
+            <ng-container *ngIf="unitComparison.unit1RawHits < unitComparison.unit1UpgradedHits">
+              <div style="width: {{ 100 - getRatio(unitComparison) }}%" class="h-full bad-bg text-center"></div>
+            </ng-container>
+            <ng-container *ngIf="unitComparison.unit1RawHits > unitComparison.unit1UpgradedHits">
+              <div style="width: {{ 100 - getRatio(unitComparison) }}%" class="h-full good-bg text-center"></div>
+            </ng-container>
+          </ng-container>
         </div>
       </td>
     </ng-container>
@@ -119,16 +120,13 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="unit2Hits">
-      <th mat-header-cell *matHeaderCellDef>Hits</th>
-      <td mat-cell *matCellDef="let unitComparison">
-        {{ unitComparison.unit2UpgradedHits }}
-        <ng-container *ngIf="unitComparison.unit2UpgradedHits < unitComparison.unit2RawHits">
-          <b class="bad-text">{{unitComparison.unit2UpgradedHits - unitComparison.unit2RawHits}}</b>
-        </ng-container>
-        <ng-container *ngIf="unitComparison.unit2UpgradedHits > unitComparison.unit2RawHits">
-          <b class="good-text">+{{unitComparison.unit2UpgradedHits - unitComparison.unit2RawHits}}</b>
-        </ng-container>
+    <ng-container matColumnDef="unit1Name">
+      <th class="right" mat-header-cell *matHeaderCellDef>My unit</th>
+      <td class="right" mat-cell *matCellDef="let unitComparison">
+        <div class="flex flex-row justify-end items-center">
+          <div>{{ unitComparison.unit1.config.name }}</div>
+          <img matTooltip="{{unitComparison.unit1.getTooltip(unitAUpgrades)}}" class="w-10" src="assets/{{unitComparison.unit1.config.name}}.png" />
+        </div>
       </td>
     </ng-container>
 
@@ -142,6 +140,19 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="unit2Hits">
+      <th mat-header-cell *matHeaderCellDef>Hits</th>
+      <td mat-cell *matCellDef="let unitComparison">
+        {{ unitComparison.unit2UpgradedHits }}
+        <ng-container *ngIf="unitComparison.unit2UpgradedHits < unitComparison.unit2RawHits">
+          <b class="good-text">{{unitComparison.unit2UpgradedHits - unitComparison.unit2RawHits}}</b>
+        </ng-container>
+        <ng-container *ngIf="unitComparison.unit2UpgradedHits > unitComparison.unit2RawHits">
+          <b class="bad-text">+{{unitComparison.unit2UpgradedHits - unitComparison.unit2RawHits}}</b>
+        </ng-container>
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="unit2Bar">
       <th class="right" mat-header-cell *matHeaderCellDef>Hits to kill my unit</th>
       <td mat-cell *matCellDef="let unitComparison">
@@ -149,11 +160,11 @@
           <div *ngFor="let _ of [].constructor(getBarCount2(unitComparison)).fill(0); let i = index;"
                class="w-full h-full neutral-bg text-center"
                [ngClass]="{
-                  'good-bg opacity-80': i >= unitComparison.unit2RawHits && i <= unitComparison.unit2UpgradedHits,
-                  'bad-bg opacity-80': i < unitComparison.unit2RawHits && i >= unitComparison.unit2UpgradedHits
+                  'bad-bg opacity-80': i >= unitComparison.unit2RawHits && i <= unitComparison.unit2UpgradedHits,
+                  'good-bg opacity-80': i < unitComparison.unit2RawHits && i >= unitComparison.unit2UpgradedHits
                 }">
-            <ng-container *ngIf="i < unitComparison.unit2RawHits && i >= unitComparison.unit2UpgradedHits">-</ng-container>
-            <ng-container *ngIf="i >= unitComparison.unit2RawHits && i <= unitComparison.unit2UpgradedHits">+</ng-container>
+            <ng-container *ngIf="i < unitComparison.unit2RawHits && i >= unitComparison.unit2UpgradedHits"></ng-container>
+            <ng-container *ngIf="i >= unitComparison.unit2RawHits && i <= unitComparison.unit2UpgradedHits"></ng-container>
           </div>
         </div>
       </td>
