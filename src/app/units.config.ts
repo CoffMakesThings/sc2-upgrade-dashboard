@@ -73,9 +73,6 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Light,
       Tag.Mechanical
     ],
-    bonusTag: Tag.Light,
-    bonusDamagePerUpgrade: 1,
-    bonusDamage: 0,
     targetsGroundOnly: true
   },
   {

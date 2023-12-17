@@ -47,6 +47,7 @@ describe('AppComponent', () => {
     const battleCruiser: Unit = units.find(u => u.config.name === 'Battlecruiser')!;
     const corruptor: Unit = units.find(u => u.config.name === 'Corruptor')!;
     const queen: Unit = units.find(u => u.config.name === 'Queen')!;
+    const hellbat: Unit = units.find(u => u.config.name === 'Hellbat')!;
     const queenAA: Unit = secondaryUnits.find(u => u.config.name === 'Queen')!;
     const colossus: Unit = units.find(u => u.config.name === 'Colossus')!;
 
@@ -195,5 +196,18 @@ describe('AppComponent', () => {
     expect(colossus.getUpgradedHits(marine, upgradesA, upgradesB)).toEqual(3);
     upgradesB.combatShields = false;
     upgradesB.armor = 0;
+
+    // 3/3 blue flame Hellbat vs 3/3 ling
+    upgradesA.weapons = 3;
+    upgradesA.armor = 3;
+    upgradesB.weapons = 3;
+    upgradesB.armor = 3;
+    upgradesA.infernalPreigniter = true;
+    expect(hellbat.getUpgradedHits(zergling, upgradesA, upgradesB)).toEqual(2);
+    upgradesA.weapons = 0;
+    upgradesA.armor = 0;
+    upgradesB.weapons = 0;
+    upgradesB.armor = 0;
+    upgradesA.infernalPreigniter = false;
   });
 });
