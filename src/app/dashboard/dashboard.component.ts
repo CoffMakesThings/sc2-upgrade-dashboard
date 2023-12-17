@@ -24,11 +24,12 @@ export class DashboardComponent implements OnInit {
   @Output() darkModeEmitter: EventEmitter<void> = new EventEmitter<void>();
 
   dataSource: UnitComparison[] = [];
-  displayedColumns: string[] = [ "unit1Bar", "unit1Name", "unit1Hits", "unit2Hits", "unit2Name", "unit2Bar" ]
+  displayedColumns: string[] = [ "unit1Bar", "unit1Hits", "unit1Name", "unit2Name", "unit2Hits", "unit2Bar" ]
   units: Unit[] = unitConfigs.map(config => new Unit(config));
+  defaultUnits: string[] = ['Marine', 'Marauder', 'Zealot', 'Stalker', 'Zergling', 'Roach']
 
   raceA: Race = Race.Terran;
-  raceB: Race = Race.Protoss;
+  raceB: Race = Race.Zerg;
   unitAUpgrades: Upgrades = {
     armor: 0,
     shields: 0,
@@ -48,6 +49,16 @@ export class DashboardComponent implements OnInit {
   protected readonly Race = Race;
 
   ngOnInit(): void {
+    this.units.forEach(u => {
+      u.enabledForA = false;
+      u.enabledForB = false;
+    });
+
+    this.units.filter(u => this.defaultUnits.includes(u.config.name)).forEach(u => {
+      u.enabledForA = true;
+      u.enabledForB = true;
+    })
+
     this.refresh();
   }
 
@@ -130,6 +141,13 @@ export class DashboardComponent implements OnInit {
 
   getBarCount(unitComparison: UnitComparison): number {
     return Math.max(unitComparison.unit1RawHits, unitComparison.unit1UpgradedHits);
+  }
+
+  getRatio(unitComparison: UnitComparison): number {
+    if (unitComparison.unit1RawHits < unitComparison.unit1UpgradedHits) {
+      return unitComparison.unit1RawHits / unitComparison.unit1UpgradedHits * 100;
+    }
+    return unitComparison.unit1UpgradedHits / unitComparison.unit1RawHits * 100;
   }
 
   getBarCount2(unitComparison: UnitComparison): number {

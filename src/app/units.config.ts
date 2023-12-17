@@ -20,7 +20,8 @@ export const unitConfigs: UnitConfig[] = [
     damagePerUpgrade: 0,
     tags: [
       Tag.Light, Tag.Biological
-    ]
+    ],
+    targetsGroundOnly: true
   },
   {
     name: 'Reaper',
@@ -31,7 +32,8 @@ export const unitConfigs: UnitConfig[] = [
     attacks: 2,
     tags: [
       Tag.Light, Tag.Biological
-    ]
+    ],
+    targetsGroundOnly: true
   },
   {
     name: 'Marauder',
@@ -42,7 +44,11 @@ export const unitConfigs: UnitConfig[] = [
     damagePerUpgrade: 1,
     tags: [
       Tag.Armored, Tag.Biological
-    ]
+    ],
+    bonusTag: Tag.Armored,
+    bonusDamage: 10,
+    bonusDamagePerUpgrade: 1,
+    targetsGroundOnly: true
   },
   {
     name: 'Ghost',
@@ -66,7 +72,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Light,
     bonusDamagePerUpgrade: 1,
-    bonusDamage: 0
+    bonusDamage: 0,
+    targetsGroundOnly: true
   },
   {
     name: 'Hellion',
@@ -79,7 +86,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Light,
     bonusDamagePerUpgrade: 1,
-    bonusDamage: 6
+    bonusDamage: 6,
+    targetsGroundOnly: true
   },
   {
     name: 'Widow mine',
@@ -102,6 +110,142 @@ export const unitConfigs: UnitConfig[] = [
     damagePerUpgrade: 1,
     tags: [
       Tag.Armored
+    ]
+  },
+  {
+    name: 'Drone',
+    race: Race.Zerg,
+    hp: 40,
+    damage: 5,
+    damagePerUpgrade: 0,
+    tags: [
+      Tag.Light, Tag.Biological
+    ],
+    targetsGroundOnly: true
+  },
+  {
+    name: 'Zergling',
+    race: Race.Zerg,
+    hp: 35,
+    damage: 5,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Light, Tag.Biological
+    ],
+    targetsGroundOnly: true
+  },
+  {
+    name: 'Roach',
+    race: Race.Zerg,
+    hp: 145,
+    armor: 1,
+    damage: 16,
+    damagePerUpgrade: 2,
+    tags: [
+      Tag.Armored, Tag.Biological
+    ],
+    targetsGroundOnly: true
+  },
+  {
+    name: 'Queen',
+    race: Race.Zerg,
+    hp: 175,
+    armor: 1,
+    damage: 9,
+    damagePerUpgrade: 1,
+    attacks: 2,
+    tags: [
+      Tag.Biological
+    ],
+    targetsGroundOnly: true
+  },
+  {
+    name: 'Queen',
+    race: Race.Zerg,
+    hp: 175,
+    armor: 1,
+    damage: 4,
+    attacks: 1,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Biological
+    ],
+    targetsAirOnly: true
+  },
+  {
+    name: 'Baneling',
+    race: Race.Zerg,
+    hp: 30,
+    damage: 16,
+    damagePerUpgrade: 2,
+    tags: [
+      Tag.Biological
+    ],
+    targetsGroundOnly: true,
+    bonusTag: Tag.Light,
+    bonusDamage: 19,
+    bonusDamagePerUpgrade: 0
+  },
+  {
+    name: 'Ravager',
+    race: Race.Zerg,
+    hp: 120,
+    armor: 1,
+    damage: 16,
+    damagePerUpgrade: 2,
+    tags: [
+      Tag.Biological
+    ],
+    targetsGroundOnly: true
+  },
+  {
+    name: 'Hydralisk',
+    race: Race.Zerg,
+    hp: 90,
+    damage: 12,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Biological,
+      Tag.Light
+    ]
+  },
+  {
+    name: 'Lurker',
+    race: Race.Zerg,
+    hp: 200,
+    armor: 1,
+    damage: 20,
+    damagePerUpgrade: 2,
+    tags: [
+      Tag.Biological,
+      Tag.Armored
+    ],
+    bonusTag: Tag.Armored,
+    bonusDamage: 10,
+    bonusDamagePerUpgrade: 1
+  },
+  {
+    name: 'Locust',
+    race: Race.Zerg,
+    hp: 50,
+    damage: 10,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Light,
+      Tag.Biological
+    ]
+  },
+  {
+    name: 'Ultralisk',
+    race: Race.Zerg,
+    hp: 500,
+    armor: 2,
+    damage: 35,
+    damagePerUpgrade: 3,
+    tags: [
+      Tag.Armored,
+      Tag.Biological,
+      Tag.Massive
     ]
   },
   {
