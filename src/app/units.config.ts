@@ -277,7 +277,7 @@ export const unitConfigs: UnitConfig[] = [
     race: Race.Zerg,
     hp: 175,
     armor: 1,
-    damage: 9,
+    damage: 4,
     damagePerUpgrade: 1,
     attacks: 2,
     tags: [
@@ -575,8 +575,7 @@ export const secondaryUnitConfigs: UnitConfig[] = [
     race: Race.Zerg,
     hp: 175,
     armor: 1,
-    damage: 4,
-    attacks: 1,
+    damage: 9,
     damagePerUpgrade: 1,
     tags: [
       Tag.Biological
@@ -611,6 +610,9 @@ export const secondaryUnitConfigs: UnitConfig[] = [
       Tag.Massive,
       Tag.Flying
     ],
+    bonusTag: Tag.Massive,
+    bonusDamage: 22,
+    bonusDamagePerUpgrade: 2,
     targetsAirOnly: true
   },
   {

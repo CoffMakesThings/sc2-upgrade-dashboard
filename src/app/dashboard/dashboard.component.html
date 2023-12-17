@@ -3,9 +3,9 @@
     <div class="w-[50%]">
       <b>My race</b>
       <div class="flex flex-row gap-1">
-        <img class="race-button" [ngClass]="{'fade': raceA != Race.Terran }" src="assets/TerranIcon.png" (click)="onRaceAClick(Race.Terran)"/>
-        <img class="race-button" [ngClass]="{'fade': raceA != Race.Zerg }" src="assets/ZergIcon.png" (click)="onRaceAClick(Race.Zerg)"/>
-        <img class="race-button" [ngClass]="{'fade': raceA != Race.Protoss }" src="assets/ProtossIcon.png" (click)="onRaceAClick(Race.Protoss)"/>
+        <img matTooltip="Terran" class="race-button" [ngClass]="{'fade': raceA != Race.Terran }" src="assets/TerranIcon.png" (click)="onRaceAClick(Race.Terran)"/>
+        <img matTooltip="Zerg" class="race-button" [ngClass]="{'fade': raceA != Race.Zerg }" src="assets/ZergIcon.png" (click)="onRaceAClick(Race.Zerg)"/>
+        <img matTooltip="Protoss" class="race-button" [ngClass]="{'fade': raceA != Race.Protoss }" src="assets/ProtossIcon.png" (click)="onRaceAClick(Race.Protoss)"/>
       </div>
     </div>
     <img *ngIf="!darkMode" matTooltip="Dark mode" class="race-button mt-4" src="assets/moon-4-64.png" (click)="darkModeEmitter.emit()"/>
@@ -15,9 +15,9 @@
         <b>Opponent race</b>
       </div>
       <div class="flex flex-row justify-end gap-1">
-        <img class="race-button" [ngClass]="{'fade': raceB != Race.Terran }" src="assets/TerranIcon.png" (click)="onRaceBClick(Race.Terran)"/>
-        <img class="race-button" [ngClass]="{'fade': raceB != Race.Zerg }" src="assets/ZergIcon.png" (click)="onRaceBClick(Race.Zerg)"/>
-        <img class="race-button" [ngClass]="{'fade': raceB != Race.Protoss }" src="assets/ProtossIcon.png" (click)="onRaceBClick(Race.Protoss)"/>
+        <img matTooltip="Terran" class="race-button" [ngClass]="{'fade': raceB != Race.Terran }" src="assets/TerranIcon.png" (click)="onRaceBClick(Race.Terran)"/>
+        <img matTooltip="Zerg" class="race-button" [ngClass]="{'fade': raceB != Race.Zerg }" src="assets/ZergIcon.png" (click)="onRaceBClick(Race.Zerg)"/>
+        <img matTooltip="Protoss" class="race-button" [ngClass]="{'fade': raceB != Race.Protoss }" src="assets/ProtossIcon.png" (click)="onRaceBClick(Race.Protoss)"/>
       </div>
     </div>
   </div>
