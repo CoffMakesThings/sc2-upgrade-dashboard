@@ -37,6 +37,7 @@ export interface Upgrades {
   weapons: number;
   combatShields: boolean;
   chitinousPlating: boolean;
+  infernalPreigniter: boolean;
 }
 
 export enum Race {
@@ -47,9 +48,11 @@ export enum Race {
 }
 
 export enum Tag {
+  Placeholder, // To avoid tags being evaluated as false
   Armored,
+  Mechanical,
   Light,
   Biological,
-  Air,
+  Flying,
   Massive
 }

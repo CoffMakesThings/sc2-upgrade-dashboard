@@ -2,6 +2,19 @@ import { Race, Tag, UnitConfig } from "./app.types";
 
 export const unitConfigs: UnitConfig[] = [
   {
+    name: 'SCV',
+    race: Race.Terran,
+    hp: 45,
+    damage: 5,
+    damagePerUpgrade: 0,
+    tags: [
+      Tag.Light,
+      Tag.Biological,
+      Tag.Mechanical
+    ],
+    targetsGroundOnly: true
+  },
+  {
     name: 'Marine',
     race: Race.Terran,
     hp: 45,
@@ -11,17 +24,6 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Light,
       Tag.Biological
     ]
-  },
-  {
-    name: 'SCV',
-    race: Race.Terran,
-    hp: 45,
-    damage: 5,
-    damagePerUpgrade: 0,
-    tags: [
-      Tag.Light, Tag.Biological
-    ],
-    targetsGroundOnly: true
   },
   {
     name: 'Reaper',
@@ -68,7 +70,8 @@ export const unitConfigs: UnitConfig[] = [
     damagePerUpgrade: 2,
     tags: [
       Tag.Biological,
-      Tag.Light
+      Tag.Light,
+      Tag.Mechanical
     ],
     bonusTag: Tag.Light,
     bonusDamagePerUpgrade: 1,
@@ -82,7 +85,8 @@ export const unitConfigs: UnitConfig[] = [
     damage: 8,
     damagePerUpgrade: 1,
     tags: [
-      Tag.Light
+      Tag.Light,
+      Tag.Mechanical
     ],
     bonusTag: Tag.Light,
     bonusDamagePerUpgrade: 1,
@@ -90,13 +94,14 @@ export const unitConfigs: UnitConfig[] = [
     targetsGroundOnly: true
   },
   {
-    name: 'Widow mine',
+    name: 'Widow Mine',
     race: Race.Terran,
     hp: 90,
     damage: 125,
     damagePerUpgrade: 0,
     tags: [
-      Tag.Light
+      Tag.Light,
+      Tag.Mechanical
     ],
     bonusTag: Tag.Light,
     bonusDamagePerUpgrade: 1,
@@ -109,8 +114,129 @@ export const unitConfigs: UnitConfig[] = [
     damage: 11,
     damagePerUpgrade: 1,
     tags: [
-      Tag.Armored
+      Tag.Armored,
+      Tag.Mechanical
     ]
+  },
+  {
+    name: 'Tank',
+    race: Race.Terran,
+    hp: 175,
+    armor: 1,
+    damage: 15,
+    damagePerUpgrade: 2,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical
+    ],
+    bonusTag: Tag.Armored,
+    bonusDamage: 10,
+    bonusDamagePerUpgrade: 1
+  },
+  {
+    name: 'Siege Tank',
+    race: Race.Terran,
+    hp: 175,
+    armor: 1,
+    damage: 40,
+    damagePerUpgrade: 4,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical
+    ],
+    bonusTag: Tag.Armored,
+    bonusDamage: 30,
+    bonusDamagePerUpgrade: 1
+  },
+  {
+    name: 'Thor',
+    race: Race.Terran,
+    hp: 400,
+    armor: 1,
+    damage: 30,
+    damagePerUpgrade: 3,
+    attacks: 2,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical,
+      Tag.Massive
+    ],
+    targetsGroundOnly: true
+  },
+  {
+    name: 'Banshee',
+    race: Race.Terran,
+    hp: 140,
+    damage: 12,
+    damagePerUpgrade: 1,
+    attacks: 2,
+    tags: [
+      Tag.Light,
+      Tag.Mechanical,
+      Tag.Flying
+    ],
+    targetsGroundOnly: true
+  },
+  {
+    name: 'Liberator',
+    race: Race.Terran,
+    hp: 180,
+    damage: 75,
+    damagePerUpgrade: 5,
+    tags: [
+      Tag.Light,
+      Tag.Mechanical,
+      Tag.Flying
+    ],
+    targetsGroundOnly: true
+  },
+  {
+    name: 'Viking Fighter',
+    race: Race.Terran,
+    hp: 135,
+    damage: 10,
+    damagePerUpgrade: 1,
+    attacks: 2,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical,
+      Tag.Flying
+    ],
+    bonusTag: Tag.Armored,
+    bonusDamage: 4,
+    bonusDamagePerUpgrade: 0,
+    targetsAirOnly: true
+  },
+  {
+    name: 'Viking Assault',
+    race: Race.Terran,
+    hp: 135,
+    damage: 12,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical,
+      Tag.Flying
+    ],
+    bonusTag: Tag.Mechanical,
+    bonusDamage: 8,
+    bonusDamagePerUpgrade: 1,
+    targetsGroundOnly: true
+  },
+  {
+    name: 'Battlecruiser',
+    race: Race.Terran,
+    hp: 550,
+    armor: 3,
+    damage: 8,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Massive,
+      Tag.Mechanical,
+      Tag.Armored,
+      Tag.Flying
+    ],
+    targetsGroundOnly: true
   },
   {
     name: 'Drone',
@@ -158,19 +284,6 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Biological
     ],
     targetsGroundOnly: true
-  },
-  {
-    name: 'Queen',
-    race: Race.Zerg,
-    hp: 175,
-    armor: 1,
-    damage: 4,
-    attacks: 1,
-    damagePerUpgrade: 1,
-    tags: [
-      Tag.Biological
-    ],
-    targetsAirOnly: true
   },
   {
     name: 'Baneling',
@@ -225,6 +338,35 @@ export const unitConfigs: UnitConfig[] = [
     bonusDamagePerUpgrade: 1
   },
   {
+    name: 'Mutalisk',
+    race: Race.Zerg,
+    hp: 120,
+    damage: 9,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Biological,
+      Tag.Light,
+      Tag.Flying
+    ]
+  },
+  {
+    name: 'Corruptor',
+    race: Race.Zerg,
+    hp: 120,
+    armor: 2,
+    damage: 14,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Biological,
+      Tag.Armored,
+      Tag.Flying
+    ],
+    bonusTag: Tag.Massive,
+    bonusDamage: 6,
+    bonusDamagePerUpgrade: 1,
+    targetsAirOnly: true
+  },
+  {
     name: 'Locust',
     race: Race.Zerg,
     hp: 50,
@@ -249,6 +391,17 @@ export const unitConfigs: UnitConfig[] = [
     ]
   },
   {
+    name: 'Probe',
+    race: Race.Protoss,
+    hp: 20,
+    shields: 20,
+    damage: 5,
+    damagePerUpgrade: 0,
+    tags: [
+      Tag.Light, Tag.Mechanical
+    ]
+  },
+  {
     name: 'Zealot',
     race: Race.Protoss,
     hp: 100,
@@ -270,7 +423,8 @@ export const unitConfigs: UnitConfig[] = [
     damage: 13,
     damagePerUpgrade: 1,
     tags: [
-      Tag.Armored
+      Tag.Armored,
+      Tag.Mechanical
     ],
     bonusTag: Tag.Armored,
     bonusDamage: 5,
@@ -301,5 +455,193 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Light, Tag.Biological
     ]
+  },
+  {
+    name: 'Archon',
+    race: Race.Protoss,
+    hp: 10,
+    shields: 350,
+    damage: 25,
+    damagePerUpgrade: 3,
+    tags: [
+      Tag.Massive
+    ],
+    bonusTag: Tag.Biological,
+    bonusDamage: 10,
+    bonusDamagePerUpgrade: 1
+  },
+  {
+    name: 'Immortal',
+    race: Race.Protoss,
+    hp: 200,
+    armor: 1,
+    shields: 100,
+    damage: 20,
+    damagePerUpgrade: 2,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical
+    ],
+    bonusTag: Tag.Armored,
+    bonusDamage: 30,
+    bonusDamagePerUpgrade: 3
+  },
+  {
+    name: 'Colossus',
+    race: Race.Protoss,
+    hp: 200,
+    shields: 150,
+    armor: 1,
+    damage: 10,
+    damagePerUpgrade: 1,
+    attacks: 2,
+    tags: [
+      Tag.Armored,
+      Tag.Massive,
+      Tag.Mechanical
+    ],
+    bonusTag: Tag.Light,
+    bonusDamage: 5,
+    bonusDamagePerUpgrade: 1
+  },
+  {
+    name: 'Phoenix',
+    race: Race.Protoss,
+    hp: 120,
+    shields: 60,
+    damage: 5,
+    damagePerUpgrade: 1,
+    attacks: 2,
+    tags: [
+      Tag.Light,
+      Tag.Mechanical,
+      Tag.Flying
+    ],
+    bonusTag: Tag.Light,
+    bonusDamage: 5,
+    bonusDamagePerUpgrade: 1
+  },
+  {
+    name: 'Void Ray',
+    race: Race.Protoss,
+    hp: 150,
+    shields: 100,
+    damage: 6,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical,
+      Tag.Flying
+    ],
+    bonusTag: Tag.Armored,
+    bonusDamage: 4,
+    bonusDamagePerUpgrade: 1
+  },
+  {
+    name: 'Carrier',
+    race: Race.Protoss,
+    hp: 300,
+    shields: 150,
+    damage: 5,
+    damagePerUpgrade: 1,
+    attacks: 8,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical,
+      Tag.Massive,
+      Tag.Flying
+    ]
+  },
+  {
+    name: 'Tempest',
+    race: Race.Protoss,
+    hp: 200,
+    shields: 100,
+    damage: 40,
+    damagePerUpgrade: 4,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical,
+      Tag.Massive,
+      Tag.Flying
+    ],
+    targetsGroundOnly: true
   }
+]
+
+export const secondaryUnitConfigs: UnitConfig[] = [
+  {
+    name: 'Queen',
+    race: Race.Zerg,
+    hp: 175,
+    armor: 1,
+    damage: 4,
+    attacks: 1,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Biological
+    ],
+    targetsAirOnly: true
+  },
+  {
+    name: 'Battlecruiser',
+    race: Race.Terran,
+    hp: 550,
+    armor: 3,
+    damage: 5,
+    damagePerUpgrade: 1,
+    tags: [
+      Tag.Massive,
+      Tag.Mechanical,
+      Tag.Armored,
+      Tag.Flying
+    ],
+    targetsAirOnly: true
+  },
+  {
+    name: 'Tempest',
+    race: Race.Protoss,
+    hp: 200,
+    shields: 100,
+    damage: 30,
+    damagePerUpgrade: 3,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical,
+      Tag.Massive,
+      Tag.Flying
+    ],
+    targetsAirOnly: true
+  },
+  {
+    name: 'Thor',
+    race: Race.Terran,
+    hp: 400,
+    armor: 1,
+    damage: 25,
+    damagePerUpgrade: 3,
+    tags: [
+      Tag.Armored,
+      Tag.Mechanical,
+      Tag.Massive
+    ],
+    bonusTag: Tag.Massive,
+    bonusDamage: 10,
+    bonusDamagePerUpgrade: 1,
+    targetsAirOnly: true
+  },
+  {
+    name: 'Liberator',
+    race: Race.Terran,
+    hp: 180,
+    damage: 5,
+    damagePerUpgrade: 1,
+    attacks: 2,
+    tags: [
+      Tag.Light,
+      Tag.Mechanical,
+      Tag.Flying
+    ],
+    targetsAirOnly: true
+  },
 ]
