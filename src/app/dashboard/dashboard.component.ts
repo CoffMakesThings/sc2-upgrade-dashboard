@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableModule } from "@angular/material/table";
 import { Race, UnitComparison, Upgrades } from "../app.types";
-import { unitConfigs } from "../units.config";
+import { secondaryUnitConfigs, unitConfigs } from "../units.config";
 import { Unit } from "../unit";
 import { NgClass, NgForOf, NgIf } from "@angular/common";
 import { MatTooltipModule } from "@angular/material/tooltip";
@@ -26,24 +26,27 @@ export class DashboardComponent implements OnInit {
   dataSource: UnitComparison[] = [];
   displayedColumns: string[] = [ "unit1Bar", "unit1Hits", "unit1Name", "unit2Name", "unit2Hits", "unit2Bar" ]
   units: Unit[] = unitConfigs.map(config => new Unit(config));
+  secondaryUnits: Unit[] = secondaryUnitConfigs.map(config => new Unit(config));
   defaultUnits: string[] = ['Marine', 'Marauder', 'Zealot', 'Stalker', 'Zergling', 'Roach']
 
   raceA: Race = Race.Terran;
   raceB: Race = Race.Zerg;
-  unitAUpgrades: Upgrades = {
+  upgradesA: Upgrades = {
     armor: 0,
     shields: 0,
     weapons: 0,
     combatShields: false,
-    chitinousPlating: false
+    chitinousPlating: false,
+    infernalPreigniter: false
   };
 
-  unitBUpgrades: Upgrades = {
+  upgradesB: Upgrades = {
     armor: 0,
     shields: 0,
     weapons: 0,
     combatShields: false,
-    chitinousPlating: false
+    chitinousPlating: false,
+    infernalPreigniter: false
   };
 
   protected readonly Race = Race;
@@ -67,14 +70,24 @@ export class DashboardComponent implements OnInit {
 
     for (let unit1 of this.getUnitsOfRace(this.raceA).filter(u => u.enabledForA)) {
       for (let unit2 of this.getUnitsOfRace(this.raceB).filter(u => u.enabledForB)) {
+        if (!unit1.canAttack(unit2) && this.secondaryUnits.find(u => u.config.name === unit1.config.name)) {
+          unit1 = this.secondaryUnits.find(u => u.config.name === unit1.config.name)!;
+        }
+
+        if (!unit2.canAttack(unit1) && this.secondaryUnits.find(u => u.config.name === unit2.config.name)) {
+          unit2 = this.secondaryUnits.find(u => u.config.name === unit2.config.name)!;
+        }
+
+        if (!unit1.canAttack(unit2) && !unit2.canAttack(unit1)) continue;
+
         const unitComparison: UnitComparison = {
           unit1: unit1,
-          unit1UpgradedHits: unit1.getUpgradedHits(unit2, this.unitAUpgrades, this.unitBUpgrades),
+          unit1UpgradedHits: unit1.getUpgradedHits(unit2, this.upgradesA, this.upgradesB),
           unit1RawHits: unit1.getRawHits(unit2),
           unit1RemainingHp: 0,
           unit1Time: 0,
           unit2: unit2,
-          unit2UpgradedHits: unit2.getUpgradedHits(unit1, this.unitBUpgrades, this.unitAUpgrades),
+          unit2UpgradedHits: unit2.getUpgradedHits(unit1, this.upgradesB, this.upgradesA),
           unit2RawHits: unit2.getRawHits(unit1),
           unit2RemainingHp: 0,
           unit2Time: 0
@@ -128,13 +141,37 @@ export class DashboardComponent implements OnInit {
   }
 
   onCombatShieldsAClick(): void {
-    this.unitAUpgrades.combatShields = !this.unitAUpgrades.combatShields;
+    this.upgradesA.combatShields = !this.upgradesA.combatShields;
+
+    this.refresh();
+  }
+
+  onCombatShieldsBClick(): void {
+    this.upgradesB.combatShields = !this.upgradesB.combatShields;
 
     this.refresh();
   }
 
   onChitinousPlatingAClick(): void {
-    this.unitAUpgrades.chitinousPlating = !this.unitAUpgrades.chitinousPlating;
+    this.upgradesA.chitinousPlating = !this.upgradesA.chitinousPlating;
+
+    this.refresh();
+  }
+
+  onChitinousPlatingBClick(): void {
+    this.upgradesB.chitinousPlating = !this.upgradesB.chitinousPlating;
+
+    this.refresh();
+  }
+
+  onInfernalPreigniterAClick(): void {
+    this.upgradesA.infernalPreigniter = !this.upgradesA.infernalPreigniter;
+
+    this.refresh();
+  }
+
+  onInfernalPreigniterBClick(): void {
+    this.upgradesB.infernalPreigniter = !this.upgradesB.infernalPreigniter;
 
     this.refresh();
   }
@@ -148,6 +185,13 @@ export class DashboardComponent implements OnInit {
       return unitComparison.unit1RawHits / unitComparison.unit1UpgradedHits * 100;
     }
     return unitComparison.unit1UpgradedHits / unitComparison.unit1RawHits * 100;
+  }
+
+  getRatio2(unitComparison: UnitComparison): number {
+    if (unitComparison.unit2RawHits < unitComparison.unit2UpgradedHits) {
+      return unitComparison.unit2RawHits / unitComparison.unit2UpgradedHits * 100;
+    }
+    return unitComparison.unit2UpgradedHits / unitComparison.unit2RawHits * 100;
   }
 
   getBarCount2(unitComparison: UnitComparison): number {
