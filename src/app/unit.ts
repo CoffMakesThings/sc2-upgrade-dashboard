@@ -13,18 +13,18 @@ export class Unit {
     let hits: number = 0;
 
     while (shields > 0) {
-      const damage: number = Math.max(1, this.getUpgradedDamage(ownUpgrades, target) - opposingUpgrades.shields);
+      const damage: number = Math.max(1, this.getUpgradedDamage(ownUpgrades, target) - opposingUpgrades.shields * this.getAttacks());
       shields -= damage;
       hits += 1;
     }
 
     if (shields < 0) {
-      const damage: number = Math.max(1, Math.abs(shields) - target.getUpgradedArmor(opposingUpgrades));
+      const damage: number = Math.max(1, Math.abs(shields) - target.getUpgradedArmor(opposingUpgrades) * this.getAttacks());
       hp -= damage;
     }
 
     while (hp > 0) {
-      const damage: number = Math.max(1, this.getUpgradedDamage(ownUpgrades, target) - target.getUpgradedArmor(opposingUpgrades));
+      const damage: number = Math.max(1, this.getUpgradedDamage(ownUpgrades, target) - target.getUpgradedArmor(opposingUpgrades) * this.getAttacks());
       hp -= damage;
       hits += 1;
     }
@@ -44,12 +44,12 @@ export class Unit {
     }
 
     if (shields < 0) {
-      const damage: number = Math.max(1, Math.abs(shields) - target.getRawArmor());
+      const damage: number = Math.max(1, Math.abs(shields));
       hp -= damage;
     }
 
     while (hp > 0) {
-      const damage: number = Math.max(1, this.getRawDamage(target) - target.getRawArmor());
+      const damage: number = Math.max(1, this.getRawDamage(target) - target.getRawArmor() * this.getAttacks());
       hp -= damage;
       hits += 1;
     }
