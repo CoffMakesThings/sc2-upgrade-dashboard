@@ -59,6 +59,7 @@ describe('AppComponent', () => {
     const hellbat: Unit = units.find(u => u.config.name === 'Hellbat')!;
     const queenAA: Unit = secondaryUnits.find(u => u.config.name === 'Queen')!;
     const colossus: Unit = units.find(u => u.config.name === 'Colossus')!;
+    const carrier: Unit = units.find(u => u.config.name === 'Carrier')!;
 
     let upgradesA: Upgrades = JSON.parse(JSON.stringify(baseUpgrades));
     let upgradesB: Upgrades = JSON.parse(JSON.stringify(baseUpgrades));
@@ -198,6 +199,23 @@ describe('AppComponent', () => {
     upgradesB.armor = 3;
     upgradesA.infernalPreigniter = true;
     expect(hellbat.getUpgradedHits(zergling, upgradesA, upgradesB)).toEqual(2);
+    upgradesA = JSON.parse(JSON.stringify(baseUpgrades));
+    upgradesB = JSON.parse(JSON.stringify(baseUpgrades));
+
+    // Marine vs +0/3 Battlecruiser
+    upgradesB.armor = 3;
+    expect(marine.getUpgradedHits(battleCruiser, upgradesA, upgradesB)).toEqual(1100);
+    upgradesA = JSON.parse(JSON.stringify(baseUpgrades));
+    upgradesB = JSON.parse(JSON.stringify(baseUpgrades));
+
+    // Carrier vs marauder
+    expect(carrier.getRawHits(marauder)).toEqual(16);
+    upgradesA.weapons = 1;
+    expect(carrier.getUpgradedHits(marauder, upgradesA, upgradesB)).toEqual(13);
+    upgradesA.weapons = 2;
+    expect(carrier.getUpgradedHits(marauder, upgradesA, upgradesB)).toEqual(11);
+    upgradesA.weapons = 3;
+    expect(carrier.getUpgradedHits(marauder, upgradesA, upgradesB)).toEqual(9);
     upgradesA = JSON.parse(JSON.stringify(baseUpgrades));
     upgradesB = JSON.parse(JSON.stringify(baseUpgrades));
   });
