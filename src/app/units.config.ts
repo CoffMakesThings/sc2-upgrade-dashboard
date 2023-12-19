@@ -541,7 +541,7 @@ export const unitConfigs: UnitConfig[] = [
     shields: 150,
     damage: 5,
     damagePerUpgrade: 1,
-    attacks: 8,
+    attacks: 2,
     tags: [
       Tag.Armored,
       Tag.Mechanical,

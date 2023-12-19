@@ -3,6 +3,7 @@ import { Tag, UnitConfig, Upgrades } from "./app.types";
 export class Unit {
   enabledForA: boolean = true;
   enabledForB: boolean = true;
+  readonly minimumDamage: number = 0.5;
 
   constructor(public config: UnitConfig) {
   }
@@ -13,18 +14,18 @@ export class Unit {
     let hits: number = 0;
 
     while (shields > 0) {
-      const damage: number = Math.max(1, this.getUpgradedDamage(ownUpgrades, target) - opposingUpgrades.shields * this.getAttacks());
+      const damage: number = Math.max(this.minimumDamage, this.getUpgradedDamage(ownUpgrades, target) - opposingUpgrades.shields * this.getAttacks());
       shields -= damage;
       hits += 1;
     }
 
     if (shields < 0) {
-      const damage: number = Math.max(1, Math.abs(shields) - target.getUpgradedArmor(opposingUpgrades) * this.getAttacks());
+      const damage: number = Math.max(this.minimumDamage, Math.abs(shields) - target.getUpgradedArmor(opposingUpgrades) * this.getAttacks());
       hp -= damage;
     }
 
     while (hp > 0) {
-      const damage: number = Math.max(1, this.getUpgradedDamage(ownUpgrades, target) - target.getUpgradedArmor(opposingUpgrades) * this.getAttacks());
+      const damage: number = Math.max(this.minimumDamage, this.getUpgradedDamage(ownUpgrades, target) - target.getUpgradedArmor(opposingUpgrades) * this.getAttacks());
       hp -= damage;
       hits += 1;
     }
@@ -38,18 +39,18 @@ export class Unit {
     let hits: number = 0;
 
     while (shields > 0) {
-      const damage: number = Math.max(1, this.getRawDamage(target));
+      const damage: number = Math.max(this.minimumDamage, this.getRawDamage(target));
       shields -= damage;
       hits += 1;
     }
 
     if (shields < 0) {
-      const damage: number = Math.max(1, Math.abs(shields));
+      const damage: number = Math.max(this.minimumDamage, Math.abs(shields));
       hp -= damage;
     }
 
     while (hp > 0) {
-      const damage: number = Math.max(1, this.getRawDamage(target) - target.getRawArmor() * this.getAttacks());
+      const damage: number = Math.max(this.minimumDamage, this.getRawDamage(target) - target.getRawArmor() * this.getAttacks());
       hp -= damage;
       hits += 1;
     }
