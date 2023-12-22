@@ -128,7 +128,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Armored,
     bonusDamage: 10,
-    bonusDamagePerUpgrade: 1
+    bonusDamagePerUpgrade: 1,
+    targetsGroundOnly: true
   },
   {
     name: 'Siege Tank',
@@ -143,7 +144,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Armored,
     bonusDamage: 30,
-    bonusDamagePerUpgrade: 1
+    bonusDamagePerUpgrade: 1,
+    targetsGroundOnly: true
   },
   {
     name: 'Thor',
@@ -332,7 +334,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Armored,
     bonusDamage: 10,
-    bonusDamagePerUpgrade: 1
+    bonusDamagePerUpgrade: 1,
+    targetsGroundOnly: true
   },
   {
     name: 'Mutalisk',
@@ -372,7 +375,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Light,
       Tag.Biological
-    ]
+    ],
+    targetsGroundOnly: true
   },
   {
     name: 'Ultralisk',
@@ -385,7 +389,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Armored,
       Tag.Biological,
       Tag.Massive
-    ]
+    ],
+    targetsGroundOnly: true
   },
   {
     name: 'Probe',
@@ -396,7 +401,8 @@ export const unitConfigs: UnitConfig[] = [
     damagePerUpgrade: 0,
     tags: [
       Tag.Light, Tag.Mechanical
-    ]
+    ],
+    targetsGroundOnly: true
   },
   {
     name: 'Zealot',
@@ -409,7 +415,8 @@ export const unitConfigs: UnitConfig[] = [
     damagePerUpgrade: 1,
     tags: [
       Tag.Light
-    ]
+    ],
+    targetsGroundOnly: true
   },
   {
     name: 'Stalker',
@@ -440,7 +447,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Light,
     bonusDamage: 12,
-    bonusDamagePerUpgrade: 1
+    bonusDamagePerUpgrade: 1,
+    targetsGroundOnly: true
   },
   {
     name: 'Dark Templar',
@@ -451,7 +459,8 @@ export const unitConfigs: UnitConfig[] = [
     damagePerUpgrade: 5,
     tags: [
       Tag.Light, Tag.Biological
-    ]
+    ],
+    targetsGroundOnly: true
   },
   {
     name: 'Archon',
@@ -481,7 +490,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Armored,
     bonusDamage: 30,
-    bonusDamagePerUpgrade: 3
+    bonusDamagePerUpgrade: 3,
+    targetsGroundOnly: true
   },
   {
     name: 'Colossus',
@@ -499,7 +509,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Light,
     bonusDamage: 5,
-    bonusDamagePerUpgrade: 1
+    bonusDamagePerUpgrade: 1,
+    targetsGroundOnly: true
   },
   {
     name: 'Phoenix',
