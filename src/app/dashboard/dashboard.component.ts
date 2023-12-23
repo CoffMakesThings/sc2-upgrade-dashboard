@@ -1,10 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatTableModule } from "@angular/material/table";
-import { Race, UnitComparison, Upgrades } from "../app.types";
+import { AssetsConfig, Race, UnitComparison, Upgrades } from "../app.types";
 import { secondaryUnitConfigs, unitConfigs } from "../units.config";
 import { Unit } from "../unit";
-import { NgClass, NgForOf, NgIf } from "@angular/common";
+import { NgClass, NgForOf, NgIf, NgTemplateOutlet } from "@angular/common";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { protossAssetsConfig, terranAssetsConfig, zergAssetsConfig } from "../asset.config";
+import { MatTabsModule } from "@angular/material/tabs";
+import { HitsToKillComponent } from "../hits-to-kill/hits-to-kill.component";
+import { TimeToKillComponent } from "../time-to-kill/time-to-kill.component";
+import { CostEffectivenessComponent } from "../cost-effectiveness/cost-effectiveness.component";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,23 +20,33 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     NgClass,
     NgIf,
     NgForOf,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTabsModule,
+    NgTemplateOutlet,
+    HitsToKillComponent,
+    TimeToKillComponent,
+    CostEffectivenessComponent,
+    MatButtonModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('hitsToKill', { static: false }) hitsToKillComponent!: HitsToKillComponent;
+
   @Input() darkMode: boolean = false;
   @Output() darkModeEmitter: EventEmitter<void> = new EventEmitter<void>();
 
-  dataSource: UnitComparison[] = [];
-  displayedColumns: string[] = [ "unit1Bar", "unit1Hits", "unit1Name", "unit2Name", "unit2Hits", "unit2Bar" ]
+  mode: 'HitsToKill' | 'TimeToKill' | 'CostEffectiveness' = 'HitsToKill';
   units: Unit[] = unitConfigs.map(config => new Unit(config));
-  secondaryUnits: Unit[] = secondaryUnitConfigs.map(config => new Unit(config));
   defaultUnits: string[] = ['Marine', 'Marauder', 'Zealot', 'Stalker', 'Zergling', 'Roach']
 
   raceA: Race = Race.Terran;
   raceB: Race = Race.Zerg;
+
+  assetsConfigA: AssetsConfig = terranAssetsConfig;
+  assetsConfigB: AssetsConfig = zergAssetsConfig;
+
   upgradesA: Upgrades = {
     armor: 0,
     shields: 0,
@@ -61,51 +77,42 @@ export class DashboardComponent implements OnInit {
       u.enabledForA = true;
       u.enabledForB = true;
     })
-
-    this.refresh();
   }
 
   refresh(): void {
-    this.dataSource = [];
-
-    for (let unit1 of this.getUnitsOfRace(this.raceA).filter(u => u.enabledForA)) {
-      for (let unit2 of this.getUnitsOfRace(this.raceB).filter(u => u.enabledForB)) {
-        if (!unit1.canAttack(unit2) && this.secondaryUnits.find(u => u.config.name === unit1.config.name)) {
-          unit1 = this.secondaryUnits.find(u => u.config.name === unit1.config.name)!;
-        }
-
-        if (!unit2.canAttack(unit1) && this.secondaryUnits.find(u => u.config.name === unit2.config.name)) {
-          unit2 = this.secondaryUnits.find(u => u.config.name === unit2.config.name)!;
-        }
-
-        if (!unit1.canAttack(unit2) && !unit2.canAttack(unit1)) continue;
-
-        const unitComparison: UnitComparison = {
-          unit1: unit1,
-          unit1UpgradedHits: unit1.getUpgradedHits(unit2, this.upgradesA, this.upgradesB),
-          unit1RawHits: unit1.getRawHits(unit2),
-          unit1RemainingHp: 0,
-          unit1Time: 0,
-          unit2: unit2,
-          unit2UpgradedHits: unit2.getUpgradedHits(unit1, this.upgradesB, this.upgradesA),
-          unit2RawHits: unit2.getRawHits(unit1),
-          unit2RemainingHp: 0,
-          unit2Time: 0
-        }
-
-        this.dataSource.push(unitComparison);
-      }
-    }
+    this.hitsToKillComponent.refresh();
   }
 
   onRaceAClick(race: Race): void {
     this.raceA = race;
+
+    switch(race) {
+      case Race.Terran:
+        this.assetsConfigA = terranAssetsConfig;
+        break;
+      case Race.Zerg:
+        this.assetsConfigA = zergAssetsConfig;
+        break;
+      case Race.Protoss:
+        this.assetsConfigA = protossAssetsConfig;
+    }
 
     this.refresh();
   }
 
   onRaceBClick(race: Race): void {
     this.raceB = race;
+
+    switch(race) {
+      case Race.Terran:
+        this.assetsConfigB = terranAssetsConfig;
+        break;
+      case Race.Zerg:
+        this.assetsConfigB = zergAssetsConfig;
+        break;
+      case Race.Protoss:
+        this.assetsConfigB = protossAssetsConfig;
+    }
 
     this.refresh();
   }
@@ -140,62 +147,22 @@ export class DashboardComponent implements OnInit {
     this.refresh();
   }
 
-  onCombatShieldsAClick(): void {
-    this.upgradesA.combatShields = !this.upgradesA.combatShields;
+  onCombatShieldsClick(upgrades: Upgrades): void {
+    upgrades.combatShields = !upgrades.combatShields;
 
     this.refresh();
   }
 
-  onCombatShieldsBClick(): void {
-    this.upgradesB.combatShields = !this.upgradesB.combatShields;
+  onChitinousPlatingClick(upgrades: Upgrades): void {
+    upgrades.chitinousPlating = !upgrades.chitinousPlating;
 
     this.refresh();
   }
 
-  onChitinousPlatingAClick(): void {
-    this.upgradesA.chitinousPlating = !this.upgradesA.chitinousPlating;
+  onInfernalPreigniterClick(upgrades: Upgrades): void {
+    upgrades.infernalPreigniter = !upgrades.infernalPreigniter;
 
     this.refresh();
-  }
-
-  onChitinousPlatingBClick(): void {
-    this.upgradesB.chitinousPlating = !this.upgradesB.chitinousPlating;
-
-    this.refresh();
-  }
-
-  onInfernalPreigniterAClick(): void {
-    this.upgradesA.infernalPreigniter = !this.upgradesA.infernalPreigniter;
-
-    this.refresh();
-  }
-
-  onInfernalPreigniterBClick(): void {
-    this.upgradesB.infernalPreigniter = !this.upgradesB.infernalPreigniter;
-
-    this.refresh();
-  }
-
-  getBarCount(unitComparison: UnitComparison): number {
-    return Math.max(unitComparison.unit1RawHits, unitComparison.unit1UpgradedHits);
-  }
-
-  getRatio(unitComparison: UnitComparison): number {
-    if (unitComparison.unit1RawHits < unitComparison.unit1UpgradedHits) {
-      return unitComparison.unit1RawHits / unitComparison.unit1UpgradedHits * 100;
-    }
-    return unitComparison.unit1UpgradedHits / unitComparison.unit1RawHits * 100;
-  }
-
-  getRatio2(unitComparison: UnitComparison): number {
-    if (unitComparison.unit2RawHits < unitComparison.unit2UpgradedHits) {
-      return unitComparison.unit2RawHits / unitComparison.unit2UpgradedHits * 100;
-    }
-    return unitComparison.unit2UpgradedHits / unitComparison.unit2RawHits * 100;
-  }
-
-  getBarCount2(unitComparison: UnitComparison): number {
-    return Math.max(unitComparison.unit2RawHits, unitComparison.unit2UpgradedHits);
   }
 
   onToggleUnitA(unit: Unit): void {
@@ -210,5 +177,18 @@ export class DashboardComponent implements OnInit {
 
   getUnitsOfRace(race: Race): Unit[] {
     return this.units.filter((u: Unit) => u.config.race === race)
+  }
+
+  onTabChange(index: number): void {
+    switch (index) {
+      case 0:
+        this.mode = 'HitsToKill';
+        break;
+      case 1:
+        this.mode = 'TimeToKill';
+        break;
+      case 2:
+        this.mode = 'CostEffectiveness';
+    }
   }
 }

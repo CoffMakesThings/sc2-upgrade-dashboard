@@ -56,3 +56,12 @@ export enum Tag {
   Flying,
   Massive
 }
+
+export interface AssetsConfig {
+  attack1: string;
+  attack2: string;
+  attack3: string;
+  armor1: string;
+  armor2: string;
+  armor3: string;
+}
