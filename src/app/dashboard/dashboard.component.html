@@ -2,7 +2,7 @@
   <mat-tab-group class="min-w-[800px]" (selectedIndexChange)="onTabChange($event)">
     <mat-tab label="Hits to Kill"></mat-tab>
     <mat-tab label="Time to Kill"></mat-tab>
-    <mat-tab label="Cost Effectiveness"></mat-tab>
+<!--    <mat-tab label="Cost Effectiveness"></mat-tab>-->
   </mat-tab-group>
   <button class="theme-button" *ngIf="!darkMode" mat-button (click)="darkModeEmitter.emit()">
     <div class="flex flex-row h-[48px] justify-center items-center gap-4 px-2">
@@ -44,12 +44,12 @@
     <div class="w-[50%]">
       <b>My upgrades</b>
       <div class="flex flex-row flex-wrap gap-1">
-        <img class="race-button" matTooltip="Weapons 1" [ngClass]="{'fade': upgradesA.weapons != 1 }" [src]="assetsConfigA.armor1" (click)="onWeaponClick(1, upgradesA)"/>
-        <img class="race-button" matTooltip="Weapons 2" [ngClass]="{'fade': upgradesA.weapons != 2 }" [src]="assetsConfigA.armor2" (click)="onWeaponClick(2, upgradesA)"/>
-        <img class="race-button" matTooltip="Weapons 3" [ngClass]="{'fade': upgradesA.weapons != 3 }" [src]="assetsConfigA.armor3" (click)="onWeaponClick(3, upgradesA)"/>
-        <img class="race-button" matTooltip="Armor 1" [ngClass]="{'fade': upgradesA.armor != 1 }" [src]="assetsConfigA.attack1" (click)="onArmorClick(1, upgradesA)"/>
-        <img class="race-button" matTooltip="Armor 2" [ngClass]="{'fade': upgradesA.armor != 2 }" [src]="assetsConfigA.attack2" (click)="onArmorClick(2, upgradesA)"/>
-        <img class="race-button" matTooltip="Armor 3" [ngClass]="{'fade': upgradesA.armor != 3 }" [src]="assetsConfigA.attack3" (click)="onArmorClick(3, upgradesA)"/>
+        <img class="race-button" matTooltip="Weapons 1" [ngClass]="{'fade': upgradesA.weapons != 1 }" [src]="assetsConfigA.attack1" (click)="onWeaponClick(1, upgradesA)"/>
+        <img class="race-button" matTooltip="Weapons 2" [ngClass]="{'fade': upgradesA.weapons != 2 }" [src]="assetsConfigA.attack2" (click)="onWeaponClick(2, upgradesA)"/>
+        <img class="race-button" matTooltip="Weapons 3" [ngClass]="{'fade': upgradesA.weapons != 3 }" [src]="assetsConfigA.attack3" (click)="onWeaponClick(3, upgradesA)"/>
+        <img class="race-button" matTooltip="Armor 1" [ngClass]="{'fade': upgradesA.armor != 1 }" [src]="assetsConfigA.armor1" (click)="onArmorClick(1, upgradesA)"/>
+        <img class="race-button" matTooltip="Armor 2" [ngClass]="{'fade': upgradesA.armor != 2 }" [src]="assetsConfigA.armor2" (click)="onArmorClick(2, upgradesA)"/>
+        <img class="race-button" matTooltip="Armor 3" [ngClass]="{'fade': upgradesA.armor != 3 }" [src]="assetsConfigA.armor3" (click)="onArmorClick(3, upgradesA)"/>
         <img *ngIf="raceA === Race.Protoss" class="race-button" matTooltip="Shields 1" [ngClass]="{'fade': upgradesA.shields != 1 }" src="assets/Shields_1.gif" (click)="onShieldsClick(1, upgradesA)"/>
         <img *ngIf="raceA === Race.Protoss" class="race-button" matTooltip="Shields 2" [ngClass]="{'fade': upgradesA.shields != 2 }" src="assets/Shields_2.gif" (click)="onShieldsClick(2, upgradesA)"/>
         <img *ngIf="raceA === Race.Protoss" class="race-button" matTooltip="Shields 3" [ngClass]="{'fade': upgradesA.shields != 3 }" src="assets/Shields_3.gif" (click)="onShieldsClick(3, upgradesA)"/>
@@ -63,12 +63,12 @@
         <b>Opponent upgrades</b>
       </div>
       <div class="flex flex-row flex-wrap justify-end gap-1">
-        <img class="race-button" matTooltip="Weapons 1" [ngClass]="{'fade': upgradesB.weapons != 1 }" [src]="assetsConfigB.armor1" (click)="onWeaponClick(1, upgradesB)"/>
-        <img class="race-button" matTooltip="Weapons 2" [ngClass]="{'fade': upgradesB.weapons != 2 }" [src]="assetsConfigB.armor2" (click)="onWeaponClick(2, upgradesB)"/>
-        <img class="race-button" matTooltip="Weapons 3" [ngClass]="{'fade': upgradesB.weapons != 3 }" [src]="assetsConfigB.armor3" (click)="onWeaponClick(3, upgradesB)"/>
-        <img class="race-button" matTooltip="Armor 1" [ngClass]="{'fade': upgradesB.armor != 1 }" [src]="assetsConfigB.attack1" (click)="onArmorClick(1, upgradesB)"/>
-        <img class="race-button" matTooltip="Armor 2" [ngClass]="{'fade': upgradesB.armor != 2 }" [src]="assetsConfigB.attack2" (click)="onArmorClick(2, upgradesB)"/>
-        <img class="race-button" matTooltip="Armor 3" [ngClass]="{'fade': upgradesB.armor != 3 }" [src]="assetsConfigB.attack3" (click)="onArmorClick(3, upgradesB)"/>
+        <img class="race-button" matTooltip="Weapons 1" [ngClass]="{'fade': upgradesB.weapons != 1 }" [src]="assetsConfigB.attack1" (click)="onWeaponClick(1, upgradesB)"/>
+        <img class="race-button" matTooltip="Weapons 2" [ngClass]="{'fade': upgradesB.weapons != 2 }" [src]="assetsConfigB.attack2" (click)="onWeaponClick(2, upgradesB)"/>
+        <img class="race-button" matTooltip="Weapons 3" [ngClass]="{'fade': upgradesB.weapons != 3 }" [src]="assetsConfigB.attack3" (click)="onWeaponClick(3, upgradesB)"/>
+        <img class="race-button" matTooltip="Armor 1" [ngClass]="{'fade': upgradesB.armor != 1 }" [src]="assetsConfigB.armor1" (click)="onArmorClick(1, upgradesB)"/>
+        <img class="race-button" matTooltip="Armor 2" [ngClass]="{'fade': upgradesB.armor != 2 }" [src]="assetsConfigB.armor2" (click)="onArmorClick(2, upgradesB)"/>
+        <img class="race-button" matTooltip="Armor 3" [ngClass]="{'fade': upgradesB.armor != 3 }" [src]="assetsConfigB.armor3" (click)="onArmorClick(3, upgradesB)"/>
         <img *ngIf="raceB === Race.Protoss" class="race-button" matTooltip="Shields 1" [ngClass]="{'fade': upgradesB.shields != 1 }" src="assets/Shields_1.gif" (click)="onShieldsClick(1, upgradesB)"/>
         <img *ngIf="raceB === Race.Protoss" class="race-button" matTooltip="Shields 2" [ngClass]="{'fade': upgradesB.shields != 2 }" src="assets/Shields_2.gif" (click)="onShieldsClick(2, upgradesB)"/>
         <img *ngIf="raceB === Race.Protoss" class="race-button" matTooltip="Shields 3" [ngClass]="{'fade': upgradesB.shields != 3 }" src="assets/Shields_3.gif" (click)="onShieldsClick(3, upgradesB)"/>
@@ -105,7 +105,12 @@
                     [raceA]="raceA"
                     [raceB]="raceB"></app-hits-to-kill>
 
-  <app-time-to-kill *ngIf="mode === 'TimeToKill'" #timeToKill></app-time-to-kill>
+  <app-time-to-kill *ngIf="mode === 'TimeToKill'" #timeToKill
+                    [upgradesA]="upgradesA"
+                    [upgradesB]="upgradesB"
+                    [units]="units"
+                    [raceA]="raceA"
+                    [raceB]="raceB"></app-time-to-kill>
 
   <app-cost-effectiveness *ngIf="mode === 'CostEffectiveness'" #costEffectiveness></app-cost-effectiveness>
 </div>

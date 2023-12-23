@@ -1,1 +1,84 @@
-<p>time-to-kill works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="unit1Bar">
+    <th mat-header-cell *matHeaderCellDef>Hits to kill opponent</th>
+    <td mat-cell *matCellDef="let unitComparison">
+      <div *ngIf="unitComparison.unit1.canAttack(unitComparison.unit2)" class="flex flex-row flex-1 h-5 gap-[1px]">
+        <div class="w-full h-full neutral-bg text-center"></div>
+        <div class="w-full h-full neutral-bg text-center" [style]="'width: ' + getPercentDiff(unitComparison.unit1RawTime, unitComparison.unit1UpgradedTime) + '%'"
+             [ngClass]="{
+              'bad-bg opacity-80': unitComparison.unit1RawTime < unitComparison.unit1UpgradedTime,
+              'good-bg opacity-80': unitComparison.unit1RawTime > unitComparison.unit1UpgradedTime
+            }">
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="unit1Time">
+    <th class="right" mat-header-cell *matHeaderCellDef>Time</th>
+    <td class="right" mat-cell *matCellDef="let unitComparison">
+      <ng-container *ngIf="unitComparison.unit1.canAttack(unitComparison.unit2)">
+        <ng-container *ngIf="unitComparison.unit1UpgradedTime < unitComparison.unit1RawTime">
+          <b class="good-text">{{unitComparison.unit1UpgradedTime - unitComparison.unit1RawTime | number:'1.2-2'}}</b>
+        </ng-container>
+        <ng-container *ngIf="unitComparison.unit1UpgradedTime > unitComparison.unit1RawTime">
+          <b class="bad-text">+{{unitComparison.unit1UpgradedTime - unitComparison.unit1RawTime | number:'1.2-2'}}</b>
+        </ng-container>
+        <div class="inline-block w-10">{{ unitComparison.unit1UpgradedTime | number:'1.2-2' }}</div>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="unit1Name">
+    <th class="right" mat-header-cell *matHeaderCellDef>My unit</th>
+    <td class="right" mat-cell *matCellDef="let unitComparison">
+      <div class="flex flex-row justify-end items-center">
+        <div>{{ unitComparison.unit1.config.name }}</div>
+        <img matTooltip="{{unitComparison.unit1.config.name}}" class="w-10" src="assets/{{unitComparison.unit1.config.name}}.png" />
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="unit2Name">
+    <th mat-header-cell *matHeaderCellDef>Opponent unit</th>
+    <td mat-cell *matCellDef="let unitComparison">
+      <div class="flex flex-row justify-start items-center">
+        <img matTooltip="{{unitComparison.unit2.config.name}}" class="w-10" src="assets/{{unitComparison.unit2.config.name}}.png" />
+        <div>{{ unitComparison.unit2.config.name }}</div>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="unit2Time">
+    <th class="right" mat-header-cell *matHeaderCellDef>Time</th>
+    <td class="right" mat-cell *matCellDef="let unitComparison">
+      <ng-container *ngIf="unitComparison.unit2.canAttack(unitComparison.unit1)">
+        <ng-container *ngIf="unitComparison.unit2UpgradedTime < unitComparison.unit2RawTime">
+          <b class="good-text">{{unitComparison.unit2UpgradedTime - unitComparison.unit2RawTime | number:'1.2-2'}}</b>
+        </ng-container>
+        <ng-container *ngIf="unitComparison.unit2UpgradedTime > unitComparison.unit2RawTime">
+          <b class="bad-text">+{{unitComparison.unit2UpgradedTime - unitComparison.unit2RawTime | number:'1.2-2'}}</b>
+        </ng-container>
+        <div class="inline-block w-10">{{ unitComparison.unit2UpgradedTime | number:'1.2-2' }}</div>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="unit2Bar">
+    <th mat-header-cell *matHeaderCellDef>Time to kill my unit</th>
+    <td mat-cell *matCellDef="let unitComparison">
+      <div *ngIf="unitComparison.unit2.canAttack(unitComparison.unit1)" class="flex flex-row flex-1 h-5 gap-[1px]">
+        <div class="w-full h-full neutral-bg text-center" [style]="'width: ' + getPercentDiff(unitComparison.unit2RawTime, unitComparison.unit2UpgradedTime) + '%'"
+             [ngClass]="{
+              'bad-bg opacity-80': unitComparison.unit2RawTime < unitComparison.unit2UpgradedTime,
+              'good-bg opacity-80': unitComparison.unit2RawTime > unitComparison.unit2UpgradedTime
+            }">
+        </div>
+        <div class="w-full h-full neutral-bg text-center"></div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
