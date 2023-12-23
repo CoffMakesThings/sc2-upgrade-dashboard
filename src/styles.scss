@@ -34,3 +34,7 @@ body {
 .cdk-overlay-container, .cdk-global-overlay-wrapper {
   white-space: pre-line;
 }
+
+.mdc-tab__text-label {
+  color: var(--text-color) !important;
+}

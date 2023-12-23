@@ -1,0 +1,52 @@
+@tailwind components;
+@tailwind utilities;
+
+.right {
+  text-align: right;
+}
+
+.mat-column-unit1Hits, .mat-column-unit2Hits {
+  width: 100px;
+}
+
+.mat-column-unit1Name, .mat-column-unit2Name {
+  width: 160px;
+}
+
+.neutral-bg {
+  background-color: #838383;
+}
+
+.bad-bg {
+  background-color: var(--red);
+  color: gainsboro;
+}
+
+.good-bg {
+  background-color: var(--green);
+}
+
+.neutral-text {
+  color: var(--text-color);
+}
+
+.bad-text {
+  color: var(--red);
+}
+
+.good-text {
+  color: var(--green);
+}
+
+table {
+  background-color: var(--background-color);
+}
+
+.mat-mdc-header-cell {
+  color: var(--text-color);
+}
+
+.mat-mdc-cell {
+  color: var(--text-color);
+}
+

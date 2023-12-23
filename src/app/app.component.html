@@ -1,3 +1,9 @@
-<div class="app-container flex-1 min-h-screen min-w-[803px]" [ngClass]="{'dark-theme': darkMode, 'light-theme': !darkMode}">
-  <app-dashboard (darkModeEmitter)="darkMode = !darkMode" [darkMode]="darkMode"></app-dashboard>
+<div class="app-container flex-1 min-h-full min-w-[803px]" [ngClass]="{'dark-theme': darkMode, 'light-theme': !darkMode}">
+  <div *ngIf="isMobile && !acknowledged" class="w-full h-full min-h-screen flex flex-col justify-center items-center gap-5">
+    <div>
+      <b>This website is not optimized for mobile, but it might work okay in landscape mode</b>
+    </div>
+    <button mat-raised-button color="primary" (click)="acknowledged = true">Okay</button>
+  </div>
+  <app-dashboard *ngIf="!isMobile || acknowledged" (darkModeEmitter)="darkMode = !darkMode" [darkMode]="darkMode"></app-dashboard>
 </div>
