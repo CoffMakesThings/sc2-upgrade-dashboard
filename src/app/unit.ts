@@ -33,6 +33,22 @@ export class Unit {
     return hits;
   }
 
+  getRawCooldown(): number {
+    return this.config.cooldown;
+  }
+
+  getUpgradedCooldown(upgrades: Upgrades): number {
+    return this.config.cooldown;
+  }
+
+  getRawTime(target: Unit): number {
+    return this.getRawHits(target) * this.getRawCooldown();
+  }
+
+  getUpgradedTime(target: Unit, ownUpgrades: Upgrades, targetUpgrades: Upgrades): number {
+    return this.getUpgradedHits(target, ownUpgrades, targetUpgrades) * this.getUpgradedCooldown(ownUpgrades);
+  }
+
   getRawHits(target: Unit): number {
     let hp: number = target.config.hp;
     let shields: number = target.getShields();

@@ -7,6 +7,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 45,
     damage: 5,
     damagePerUpgrade: 0,
+    cooldown: 1.07,
     tags: [
       Tag.Light,
       Tag.Biological,
@@ -20,6 +21,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 45,
     damage: 6,
     damagePerUpgrade: 1,
+    cooldown: 0.61,
     tags: [
       Tag.Light,
       Tag.Biological
@@ -32,6 +34,7 @@ export const unitConfigs: UnitConfig[] = [
     damage: 4,
     damagePerUpgrade: 1,
     attacks: 2,
+    cooldown: 0.79,
     tags: [
       Tag.Light, Tag.Biological
     ],
@@ -44,6 +47,7 @@ export const unitConfigs: UnitConfig[] = [
     armor: 1,
     damage: 10,
     damagePerUpgrade: 1,
+    cooldown: 1.07,
     tags: [
       Tag.Armored, Tag.Biological
     ],
@@ -58,6 +62,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 100,
     damage: 10,
     damagePerUpgrade: 1,
+    cooldown: 1.07,
     tags: [
       Tag.Biological
     ]
@@ -68,6 +73,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 135,
     damage: 18,
     damagePerUpgrade: 2,
+    cooldown: 1.43,
     tags: [
       Tag.Biological,
       Tag.Light,
@@ -81,6 +87,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 90,
     damage: 8,
     damagePerUpgrade: 1,
+    cooldown: 1.79,
     tags: [
       Tag.Light,
       Tag.Mechanical
@@ -96,6 +103,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 90,
     damage: 125,
     damagePerUpgrade: 0,
+    cooldown: 29,
     tags: [
       Tag.Light,
       Tag.Mechanical
@@ -110,6 +118,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 110,
     damage: 11,
     damagePerUpgrade: 1,
+    cooldown: 0.481,
     tags: [
       Tag.Armored,
       Tag.Mechanical
@@ -122,6 +131,7 @@ export const unitConfigs: UnitConfig[] = [
     armor: 1,
     damage: 15,
     damagePerUpgrade: 2,
+    cooldown: 0.74,
     tags: [
       Tag.Armored,
       Tag.Mechanical
@@ -138,6 +148,7 @@ export const unitConfigs: UnitConfig[] = [
     armor: 1,
     damage: 40,
     damagePerUpgrade: 4,
+    cooldown: 2.14,
     tags: [
       Tag.Armored,
       Tag.Mechanical
@@ -155,6 +166,7 @@ export const unitConfigs: UnitConfig[] = [
     damage: 30,
     damagePerUpgrade: 3,
     attacks: 2,
+    cooldown: 0.91,
     tags: [
       Tag.Armored,
       Tag.Mechanical,
@@ -169,6 +181,7 @@ export const unitConfigs: UnitConfig[] = [
     damage: 12,
     damagePerUpgrade: 1,
     attacks: 2,
+    cooldown: 0.89,
     tags: [
       Tag.Light,
       Tag.Mechanical,
@@ -182,6 +195,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 180,
     damage: 75,
     damagePerUpgrade: 5,
+    cooldown: 1.14,
     tags: [
       Tag.Light,
       Tag.Mechanical,
@@ -196,6 +210,7 @@ export const unitConfigs: UnitConfig[] = [
     damage: 10,
     damagePerUpgrade: 1,
     attacks: 2,
+    cooldown: 1.43,
     tags: [
       Tag.Armored,
       Tag.Mechanical,
@@ -212,6 +227,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 135,
     damage: 12,
     damagePerUpgrade: 1,
+    cooldown: 0.71,
     tags: [
       Tag.Armored,
       Tag.Mechanical,
@@ -229,6 +245,7 @@ export const unitConfigs: UnitConfig[] = [
     armor: 3,
     damage: 8,
     damagePerUpgrade: 1,
+    cooldown: 0.16,
     tags: [
       Tag.Massive,
       Tag.Mechanical,
@@ -243,6 +260,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 40,
     damage: 5,
     damagePerUpgrade: 0,
+    cooldown: 1.07,
     tags: [
       Tag.Light, Tag.Biological
     ],
@@ -254,6 +272,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 35,
     damage: 5,
     damagePerUpgrade: 1,
+    cooldown: 0.497,
     tags: [
       Tag.Light, Tag.Biological
     ],
@@ -266,6 +285,7 @@ export const unitConfigs: UnitConfig[] = [
     armor: 1,
     damage: 16,
     damagePerUpgrade: 2,
+    cooldown: 1.43,
     tags: [
       Tag.Armored, Tag.Biological
     ],
@@ -279,6 +299,7 @@ export const unitConfigs: UnitConfig[] = [
     damage: 4,
     damagePerUpgrade: 1,
     attacks: 2,
+    cooldown: 0.71,
     tags: [
       Tag.Biological
     ],
@@ -290,6 +311,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 30,
     damage: 16,
     damagePerUpgrade: 2,
+    cooldown: 0,
     tags: [
       Tag.Biological
     ],
@@ -305,6 +327,7 @@ export const unitConfigs: UnitConfig[] = [
     armor: 1,
     damage: 16,
     damagePerUpgrade: 2,
+    cooldown: 1.14,
     tags: [
       Tag.Biological
     ],
@@ -316,6 +339,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 90,
     damage: 12,
     damagePerUpgrade: 1,
+    cooldown: 0.59,
     tags: [
       Tag.Biological,
       Tag.Light
@@ -328,6 +352,7 @@ export const unitConfigs: UnitConfig[] = [
     armor: 1,
     damage: 20,
     damagePerUpgrade: 2,
+    cooldown: 1.43,
     tags: [
       Tag.Biological,
       Tag.Armored
@@ -343,6 +368,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 120,
     damage: 9,
     damagePerUpgrade: 1,
+    cooldown: 1.09,
     tags: [
       Tag.Biological,
       Tag.Light,
@@ -356,6 +382,7 @@ export const unitConfigs: UnitConfig[] = [
     armor: 2,
     damage: 14,
     damagePerUpgrade: 1,
+    cooldown: 1.36,
     tags: [
       Tag.Biological,
       Tag.Armored,
@@ -372,6 +399,7 @@ export const unitConfigs: UnitConfig[] = [
     hp: 50,
     damage: 10,
     damagePerUpgrade: 1,
+    cooldown: 0.43,
     tags: [
       Tag.Light,
       Tag.Biological
@@ -385,6 +413,7 @@ export const unitConfigs: UnitConfig[] = [
     armor: 2,
     damage: 35,
     damagePerUpgrade: 3,
+    cooldown: 0.61,
     tags: [
       Tag.Armored,
       Tag.Biological,
@@ -399,6 +428,7 @@ export const unitConfigs: UnitConfig[] = [
     shields: 20,
     damage: 5,
     damagePerUpgrade: 0,
+    cooldown: 1.07,
     tags: [
       Tag.Light, Tag.Mechanical
     ],
@@ -413,6 +443,7 @@ export const unitConfigs: UnitConfig[] = [
     damage: 8,
     attacks: 2,
     damagePerUpgrade: 1,
+    cooldown: 0.86,
     tags: [
       Tag.Light
     ],
@@ -426,6 +457,7 @@ export const unitConfigs: UnitConfig[] = [
     shields: 80,
     damage: 13,
     damagePerUpgrade: 1,
+    cooldown: 1.43,
     tags: [
       Tag.Armored,
       Tag.Mechanical
@@ -442,6 +474,7 @@ export const unitConfigs: UnitConfig[] = [
     shields: 70,
     damage: 10,
     damagePerUpgrade: 1,
+    cooldown: 1.61,
     tags: [
       Tag.Light, Tag.Biological
     ],
@@ -457,6 +490,7 @@ export const unitConfigs: UnitConfig[] = [
     shields: 80,
     damage: 45,
     damagePerUpgrade: 5,
+    cooldown: 1.21,
     tags: [
       Tag.Light, Tag.Biological
     ],
@@ -469,6 +503,7 @@ export const unitConfigs: UnitConfig[] = [
     shields: 350,
     damage: 25,
     damagePerUpgrade: 3,
+    cooldown: 1.25,
     tags: [
       Tag.Massive
     ],
@@ -484,6 +519,7 @@ export const unitConfigs: UnitConfig[] = [
     shields: 100,
     damage: 20,
     damagePerUpgrade: 2,
+    cooldown: 1.04,
     tags: [
       Tag.Armored,
       Tag.Mechanical
@@ -502,6 +538,7 @@ export const unitConfigs: UnitConfig[] = [
     damage: 10,
     damagePerUpgrade: 1,
     attacks: 2,
+    cooldown: 1.07,
     tags: [
       Tag.Armored,
       Tag.Massive,
@@ -520,6 +557,7 @@ export const unitConfigs: UnitConfig[] = [
     damage: 5,
     damagePerUpgrade: 1,
     attacks: 2,
+    cooldown: 0.79,
     tags: [
       Tag.Light,
       Tag.Mechanical,
@@ -536,6 +574,7 @@ export const unitConfigs: UnitConfig[] = [
     shields: 100,
     damage: 6,
     damagePerUpgrade: 1,
+    cooldown: 0.36,
     tags: [
       Tag.Armored,
       Tag.Mechanical,
@@ -553,6 +592,7 @@ export const unitConfigs: UnitConfig[] = [
     damage: 5,
     damagePerUpgrade: 1,
     attacks: 2,
+    cooldown: 2.14 / 8,
     tags: [
       Tag.Armored,
       Tag.Mechanical,
@@ -567,6 +607,7 @@ export const unitConfigs: UnitConfig[] = [
     shields: 100,
     damage: 40,
     damagePerUpgrade: 4,
+    cooldown: 2.36,
     tags: [
       Tag.Armored,
       Tag.Mechanical,
@@ -585,6 +626,7 @@ export const secondaryUnitConfigs: UnitConfig[] = [
     armor: 1,
     damage: 9,
     damagePerUpgrade: 1,
+    cooldown: 0.71,
     tags: [
       Tag.Biological
     ],
@@ -597,6 +639,7 @@ export const secondaryUnitConfigs: UnitConfig[] = [
     armor: 3,
     damage: 5,
     damagePerUpgrade: 1,
+    cooldown: 0.16,
     tags: [
       Tag.Massive,
       Tag.Mechanical,
@@ -612,6 +655,7 @@ export const secondaryUnitConfigs: UnitConfig[] = [
     shields: 100,
     damage: 30,
     damagePerUpgrade: 3,
+    cooldown: 2.36,
     tags: [
       Tag.Armored,
       Tag.Mechanical,
@@ -630,6 +674,7 @@ export const secondaryUnitConfigs: UnitConfig[] = [
     armor: 1,
     damage: 25,
     damagePerUpgrade: 3,
+    cooldown: 0.91,
     tags: [
       Tag.Armored,
       Tag.Mechanical,
@@ -647,6 +692,7 @@ export const secondaryUnitConfigs: UnitConfig[] = [
     damage: 5,
     damagePerUpgrade: 1,
     attacks: 2,
+    cooldown: 1.29,
     tags: [
       Tag.Light,
       Tag.Mechanical,

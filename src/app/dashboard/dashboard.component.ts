@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatTableModule } from "@angular/material/table";
-import { AssetsConfig, Race, UnitComparison, Upgrades } from "../app.types";
+import { AssetsConfig, Race, HitsToKillComparison, Upgrades } from "../app.types";
 import { secondaryUnitConfigs, unitConfigs } from "../units.config";
 import { Unit } from "../unit";
 import { NgClass, NgForOf, NgIf, NgTemplateOutlet } from "@angular/common";
@@ -33,6 +33,7 @@ import { MatButtonModule } from "@angular/material/button";
 })
 export class DashboardComponent implements OnInit {
   @ViewChild('hitsToKill', { static: false }) hitsToKillComponent!: HitsToKillComponent;
+  @ViewChild('timeToKill', { static: false }) timeToKillComponent!: TimeToKillComponent;
 
   @Input() darkMode: boolean = false;
   @Output() darkModeEmitter: EventEmitter<void> = new EventEmitter<void>();
@@ -80,7 +81,8 @@ export class DashboardComponent implements OnInit {
   }
 
   refresh(): void {
-    this.hitsToKillComponent.refresh();
+    if (this.hitsToKillComponent) this.hitsToKillComponent.refresh();
+    if (this.timeToKillComponent) this.timeToKillComponent.refresh();
   }
 
   onRaceAClick(race: Race): void {

@@ -9,7 +9,7 @@ export interface UnitConfig {
   damage: number;
   damagePerUpgrade: number;
   armor?: number;
-  cooldown?: number;
+  cooldown: number;
   tags: Tag[];
   bonusTag?: Tag;
   bonusDamage?: number;
@@ -18,17 +18,26 @@ export interface UnitConfig {
   targetsAirOnly?: boolean;
 }
 
-export interface UnitComparison {
+export interface HitsToKillComparison {
   unit1: Unit;
   unit1UpgradedHits: number;
   unit1RawHits: number;
   unit1RemainingHp: number;
-  unit1Time: number;
   unit2: Unit;
   unit2UpgradedHits: number;
   unit2RawHits: number;
   unit2RemainingHp: number;
-  unit2Time: number;
+}
+
+export interface TimeToKillComparison {
+  unit1: Unit;
+  unit1RemainingHp: number;
+  unit1RawTime: number;
+  unit1UpgradedTime: number;
+  unit2: Unit;
+  unit2RemainingHp: number;
+  unit2RawTime: number;
+  unit2UpgradedTime: number;
 }
 
 export interface Upgrades {
