@@ -10,7 +10,13 @@ const baseUpgrades: Upgrades = {
   weapons: 0,
   combatShields: false,
   chitinousPlating: false,
-  infernalPreigniter: false
+  infernalPreigniter: false,
+  resonatingGlaives: false,
+  adrenalGlands: false,
+  antiArmorMissile: false,
+  guardianShield: false,
+  microbialShroud: false,
+  stim: false
 }
 
 describe('AppComponent', () => {

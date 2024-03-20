@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HitsToKillComponent } from './hits-to-kill.component';
+import { Unit } from "../unit";
+import { unitConfigs } from "../units.config";
 
 describe('HitsToKillComponent', () => {
   let component: HitsToKillComponent;
@@ -11,9 +13,10 @@ describe('HitsToKillComponent', () => {
       imports: [HitsToKillComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(HitsToKillComponent);
     component = fixture.componentInstance;
+    component.units = unitConfigs.map(config => new Unit(config));
     fixture.detectChanges();
   });
 
