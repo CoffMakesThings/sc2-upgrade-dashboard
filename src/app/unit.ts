@@ -38,6 +38,12 @@ export class Unit {
   }
 
   getUpgradedCooldown(upgrades: Upgrades): number {
+    if (upgrades.resonatingGlaives && this.config.name === 'Adept') {
+      return this.config.cooldown - this.config.cooldown * 0.45;
+    }
+    if (upgrades.adrenalGlands && this.config.name === 'Zergling') {
+      return this.config.cooldown - 0.15;
+    }
     return this.config.cooldown;
   }
 

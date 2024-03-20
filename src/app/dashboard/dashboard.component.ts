@@ -54,7 +54,13 @@ export class DashboardComponent implements OnInit {
     weapons: 0,
     combatShields: false,
     chitinousPlating: false,
-    infernalPreigniter: false
+    infernalPreigniter: false,
+    adrenalGlands: false,
+    resonatingGlaives: false,
+    stim: false,
+    antiArmorMissile: false,
+    guardianShield: false,
+    microbialShroud: false,
   };
 
   upgradesB: Upgrades = {
@@ -63,7 +69,13 @@ export class DashboardComponent implements OnInit {
     weapons: 0,
     combatShields: false,
     chitinousPlating: false,
-    infernalPreigniter: false
+    infernalPreigniter: false,
+    resonatingGlaives: false,
+    adrenalGlands: false,
+    stim: false,
+    antiArmorMissile: false,
+    guardianShield: false,
+    microbialShroud: false,
   };
 
   protected readonly Race = Race;
@@ -151,19 +163,46 @@ export class DashboardComponent implements OnInit {
 
   onCombatShieldsClick(upgrades: Upgrades): void {
     upgrades.combatShields = !upgrades.combatShields;
-
     this.refresh();
   }
 
   onChitinousPlatingClick(upgrades: Upgrades): void {
     upgrades.chitinousPlating = !upgrades.chitinousPlating;
-
     this.refresh();
   }
 
   onInfernalPreigniterClick(upgrades: Upgrades): void {
     upgrades.infernalPreigniter = !upgrades.infernalPreigniter;
+    this.refresh();
+  }
 
+  onResonatingGlaivesClick(upgrades: Upgrades): void {
+    upgrades.resonatingGlaives = !upgrades.resonatingGlaives;
+    this.refresh();
+  }
+
+  onAdrenalGlandsClick(upgrades: Upgrades): void {
+    upgrades.adrenalGlands = !upgrades.adrenalGlands;
+    this.refresh();
+  }
+
+  onStimClick(upgrades: Upgrades): void {
+    upgrades.stim = !upgrades.stim;
+    this.refresh();
+  }
+
+  onAntiArmorMissileClick(upgrades: Upgrades): void {
+    upgrades.antiArmorMissile = !upgrades.antiArmorMissile;
+    this.refresh();
+  }
+
+  onGuardianShieldClick(upgrades: Upgrades): void {
+    upgrades.guardianShield = !upgrades.guardianShield;
+    this.refresh();
+  }
+
+  onMicrobialShroudClick(upgrades: Upgrades): void {
+    upgrades.microbialShroud = !upgrades.microbialShroud;
     this.refresh();
   }
 

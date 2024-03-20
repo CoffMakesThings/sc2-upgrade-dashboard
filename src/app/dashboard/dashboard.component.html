@@ -1,5 +1,5 @@
 <div class="flex flex-row justify-between">
-  <mat-tab-group class="min-w-[800px]" (selectedIndexChange)="onTabChange($event)">
+  <mat-tab-group class="min-w-[600px]" (selectedIndexChange)="onTabChange($event)">
     <mat-tab label="Hits to Kill"></mat-tab>
     <mat-tab label="Time to Kill"></mat-tab>
 <!--    <mat-tab label="Cost Effectiveness"></mat-tab>-->
@@ -56,6 +56,8 @@
         <img *ngIf="raceA === Race.Terran" class="race-button" matTooltip="{{'Combat shields\nMarine HP +10'}}" [ngClass]="{'fade': !upgradesA.combatShields }" src="assets/60px-Combat_Shield.png" (click)="onCombatShieldsClick(upgradesA)"/>
         <img *ngIf="raceA === Race.Zerg" class="race-button" matTooltip="{{'Chitinous plating\nUltralisk armor +2'}}" [ngClass]="{'fade': !upgradesA.chitinousPlating }" src="assets/Chitinous_Plating.gif" (click)="onChitinousPlatingClick(upgradesA)"/>
         <img *ngIf="raceA === Race.Terran" class="race-button" matTooltip="{{'Infernal preigniter\nHellion +5 dmg vs Light\nHellbat +12 dmg vs Light'}}" [ngClass]="{'fade': !upgradesA.infernalPreigniter }" src="assets/InfernalPreigniter.gif" (click)="onInfernalPreigniterClick(upgradesA)"/>
+        <img *ngIf="raceA === Race.Protoss && mode != 'HitsToKill'" class="race-button" matTooltip="{{'Resonating glaives\nAdept +45% attack speed'}}" [ngClass]="{'fade': !upgradesA.resonatingGlaives }" src="assets/Resonating_Glaives.png" (click)="onResonatingGlaivesClick(upgradesA)"/>
+        <img *ngIf="raceA === Race.Zerg && mode != 'HitsToKill'" class="race-button" matTooltip="{{'Adrenal glands\nZergling -0.15 cooldown'}}" [ngClass]="{'fade': !upgradesA.adrenalGlands }" src="assets/Adrenal_glands.gif" (click)="onAdrenalGlandsClick(upgradesA)"/>
       </div>
     </div>
     <div class="w-[50%]">
@@ -75,6 +77,8 @@
         <img *ngIf="raceB === Race.Terran" class="race-button" matTooltip="{{'Combat shields\nMarine HP +10'}}" [ngClass]="{'fade': !upgradesB.combatShields }" src="assets/60px-Combat_Shield.png" (click)="onCombatShieldsClick(upgradesB)"/>
         <img *ngIf="raceB === Race.Zerg" class="race-button" matTooltip="{{'Chitinous plating\nUltralisk armor +2'}}" [ngClass]="{'fade': !upgradesB.chitinousPlating }" src="assets/Chitinous_Plating.gif" (click)="onChitinousPlatingClick(upgradesB)"/>
         <img *ngIf="raceB === Race.Terran" class="race-button" matTooltip="{{'Infernal preigniter\nHellion +5 dmg vs Light\nHellbat +12 dmg vs Light'}}" [ngClass]="{'fade': !upgradesB.infernalPreigniter }" src="assets/InfernalPreigniter.gif" (click)="onInfernalPreigniterClick(upgradesB)"/>
+        <img *ngIf="raceB === Race.Protoss && mode != 'HitsToKill'" class="race-button" matTooltip="{{'Resonating glaives\nAdept +45% attack speed'}}" [ngClass]="{'fade': !upgradesB.resonatingGlaives }" src="assets/Resonating_Glaives.png" (click)="onResonatingGlaivesClick(upgradesB)"/>
+        <img *ngIf="raceB === Race.Zerg && mode != 'HitsToKill'" class="race-button" matTooltip="{{'Adrenal glands\nZergling -0.15 cooldown'}}" [ngClass]="{'fade': !upgradesB.adrenalGlands }" src="assets/Adrenal_glands.gif" (click)="onAdrenalGlandsClick(upgradesB)"/>
       </div>
     </div>
   </div>

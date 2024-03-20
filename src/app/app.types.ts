@@ -47,6 +47,12 @@ export interface Upgrades {
   combatShields: boolean;
   chitinousPlating: boolean;
   infernalPreigniter: boolean;
+  resonatingGlaives: boolean;
+  adrenalGlands: boolean;
+  stim: boolean;
+  antiArmorMissile: boolean;
+  guardianShield: boolean;
+  microbialShroud: boolean;
 }
 
 export enum Race {
