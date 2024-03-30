@@ -42,9 +42,15 @@ export class Unit {
     if (upgrades.resonatingGlaives && this.config.name === 'Adept') {
       return this.config.cooldown - this.config.cooldown * 0.45;
     }
+
     if (upgrades.adrenalGlands && this.config.name === 'Zergling') {
       return this.config.cooldown - 0.15;
     }
+
+    if (upgrades.stim && (this.config.name === 'Marine' || this.config.name === 'Marauder')) {
+      return this.config.cooldown / 2;
+    }
+
     return this.config.cooldown;
   }
 
@@ -159,11 +165,17 @@ export class Unit {
   }
 
   getHp(upgrades: Upgrades): number {
-    if (this.config.name === 'Marine') {
-      return this.config.hp + (upgrades.combatShields ? 10 : 0);
+    let modifier: number = 0;
+
+    if (upgrades.combatShields && this.config.name === 'Marine') {
+      modifier += 10;
     }
 
-    return this.config.hp;
+    if (upgrades.stim && (this.config.name === 'Marine' || this.config.name === 'Marauder')) {
+      modifier -= 10;
+    }
+
+    return this.config.hp + modifier;
   }
 
   canAttack(target: Unit): boolean {
