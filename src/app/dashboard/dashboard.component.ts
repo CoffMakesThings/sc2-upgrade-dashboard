@@ -93,8 +93,10 @@ export class DashboardComponent implements OnInit {
   }
 
   refresh(): void {
-    if (this.hitsToKillComponent) this.hitsToKillComponent.refresh();
-    if (this.timeToKillComponent) this.timeToKillComponent.refresh();
+    setTimeout(() => {
+      if (this.hitsToKillComponent) this.hitsToKillComponent.refresh();
+      if (this.timeToKillComponent) this.timeToKillComponent.refresh();
+    });
   }
 
   onRaceAClick(race: Race): void {

@@ -14,7 +14,8 @@ export class Unit {
     let hits: number = 0;
 
     while (shields > 0) {
-      const damage: number = Math.max(this.minimumDamage, this.getUpgradedDamage(ownUpgrades, target) - opposingUpgrades.shields * this.getAttacks());
+      const damage: number = Math.max(this.minimumDamage, this.getUpgradedDamage(ownUpgrades, target, opposingUpgrades) - this.getUpgradedShields(opposingUpgrades) * this.getAttacks());
+
       shields -= damage;
       hits += 1;
     }
@@ -25,7 +26,7 @@ export class Unit {
     }
 
     while (hp > 0) {
-      const damage: number = Math.max(this.minimumDamage, this.getUpgradedDamage(ownUpgrades, target) - target.getUpgradedArmor(opposingUpgrades) * this.getAttacks());
+      const damage: number = Math.max(this.minimumDamage, this.getUpgradedDamage(ownUpgrades, target, opposingUpgrades) - target.getUpgradedArmor(opposingUpgrades) * this.getAttacks());
       hp -= damage;
       hits += 1;
     }
@@ -80,13 +81,30 @@ export class Unit {
     return hits;
   }
 
+  getUpgradedShields(ownUpgrades: Upgrades): number {
+    let modifier: number = 0;
+
+    if (ownUpgrades.antiArmorMissile) {
+      modifier -= 2;
+    }
+
+    return ownUpgrades.shields + modifier;
+  }
+
   getUpgradedArmor(ownUpgrades: Upgrades): number {
+    let modifier: number = 0;
+
     if (this.config.name === 'Ultralisk') {
       if (ownUpgrades.chitinousPlating) {
-        return this.getRawArmor() + ownUpgrades.armor + 2;
+        modifier += 2;
       }
     }
-    return this.getRawArmor() + ownUpgrades.armor;
+
+    if (ownUpgrades.antiArmorMissile) {
+      modifier -= 2;
+    }
+
+    return this.getRawArmor() + ownUpgrades.armor + modifier;
   }
 
   getRawArmor(): number {
@@ -97,22 +115,29 @@ export class Unit {
     return this.config.shields ? this.config.shields : 0;
   }
 
-  getUpgradedDamage(upgrades: Upgrades, target: Unit): number {
+  getUpgradedDamage(upgrades: Upgrades, target: Unit, opposingUpgrades: Upgrades): number {
     let damage: number = this.config.damage + this.config.damagePerUpgrade * upgrades.weapons;
+
     if (this.config.bonusTag) {
       if (target.config.tags.includes(this.config.bonusTag)) {
         damage += this.config.bonusDamage! + this.config.bonusDamagePerUpgrade! * upgrades.weapons;
       }
     }
+
     if (this.config.name === 'Hellion') {
       if (upgrades.infernalPreigniter && target.config.tags.includes(Tag.Light)) {
         damage += 5;
       }
     }
+
     if (this.config.name === 'Hellbat') {
       if (upgrades.infernalPreigniter && target.config.tags.includes(Tag.Light)) {
         damage += 12;
       }
+    }
+
+    if (this.config.range > 1 && opposingUpgrades.guardianShield) {
+      damage -= 2;
     }
 
     return damage * this.getAttacks();
