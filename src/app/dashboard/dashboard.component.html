@@ -2,6 +2,7 @@
   <mat-tab-group class="min-w-[600px]" (selectedIndexChange)="onTabChange($event)">
     <mat-tab label="Hits to Kill"></mat-tab>
     <mat-tab label="Time to Kill"></mat-tab>
+    <mat-tab label="About"></mat-tab>
     <!--    <mat-tab label="Cost Effectiveness"></mat-tab>-->
   </mat-tab-group>
   <button class="theme-button" *ngIf="!darkMode" mat-button (click)="darkModeEmitter.emit()">
@@ -18,7 +19,7 @@
   </button>
 </div>
 
-<div class="p-2.5">
+<div class="p-2.5" *ngIf="mode !== 'About'">
   <div class="flex flex-row mb-1">
     <div class="w-[50%]">
       <b>My race</b>
@@ -200,4 +201,20 @@
                     [raceB]="raceB"></app-time-to-kill>
 
   <app-cost-effectiveness *ngIf="mode === 'CostEffectiveness'" #costEffectiveness></app-cost-effectiveness>
+</div>
+
+<div class="p-2.5" *ngIf="mode === 'About'">
+  <p>If you notice any issues or have feedback you can reach me at coffmakesthings&#64;gmail.com</p>
+  <p>There was some discussion on <a target="_blank" href="https://www.reddit.com/r/starcraft/comments/18kbi0n/sc2_upgrade_calculator/">https://www.reddit.com/r/starcraft/comments/18kbi0n/sc2_upgrade_calculator/</a> which is the basis of this FAQ</p>
+  <h1>FAQ</h1>
+  <b>Is this tool open source?</b>
+  <p>I've made the code public at <a target="_blank" href="https://github.com/CoffMakesThings/sc2-upgrade-dashboard">https://github.com/CoffMakesThings/sc2-upgrade-dashboard</a>. This project wasn't created with open source in mind however, so the code may be ugly and confusing.</p>
+  <b>Where do you host it?</b>
+  <p>SC2 Upgrades is hosted using Firebase Hosting</p>
+  <b>Does the Calculator take into account that both shields and armour damage reductions are applied to an attack that breaks the shields and would otherwise deal damage to the hp?</b>
+  <p>I followed this article to figure out that scenario: <a href="https://liquipedia.net/starcraft2/Damage_Calculation">https://liquipedia.net/starcraft2/Damage_Calculation</a></p>
+  <b>Where are the air upgrades?</b>
+  <p>In the dashboard I have made one button for attack / armor / shields. This upgrades all units whether they are melee / ranged / air / ground / bio / mech. I understand this can be confusing because people are used to seeing these seperated in the game.</p>
+  <b>Have you thought about allowing to also add numbers of units? Like, 5 zerglings vs 1 queen etc. To simulate fights between groups of units.</b>
+  <p>I might do that in the future but for now the scope is just to help thinking about upgrades.</p>
 </div>

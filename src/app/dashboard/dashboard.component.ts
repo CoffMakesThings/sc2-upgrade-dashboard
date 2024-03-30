@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatTableModule } from "@angular/material/table";
-import { AssetsConfig, Race, HitsToKillComparison, Upgrades } from "../app.types";
+import { AssetsConfig, Race, HitsToKillComparison, Upgrades, Mode } from "../app.types";
 import { secondaryUnitConfigs, unitConfigs } from "../units.config";
 import { Unit } from "../unit";
 import { NgClass, NgForOf, NgIf, NgTemplateOutlet } from "@angular/common";
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
   @Input() darkMode: boolean = false;
   @Output() darkModeEmitter: EventEmitter<void> = new EventEmitter<void>();
 
-  mode: 'HitsToKill' | 'TimeToKill' | 'CostEffectiveness' = 'HitsToKill';
+  mode: string = 'HitsToKill';
   units: Unit[] = unitConfigs.map(config => new Unit(config));
   defaultUnits: string[] = ['Marine', 'Marauder', 'Zealot', 'Stalker', 'Zergling', 'Roach']
 
@@ -231,7 +231,9 @@ export class DashboardComponent implements OnInit {
         this.mode = 'TimeToKill';
         break;
       case 2:
-        this.mode = 'CostEffectiveness';
+        this.mode = 'About';
+        // this.mode = 'CostEffectiveness';
+        break;
     }
   }
 }
