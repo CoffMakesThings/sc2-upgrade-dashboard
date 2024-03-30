@@ -81,3 +81,5 @@ export interface AssetsConfig {
   armor2: string;
   armor3: string;
 }
+
+export type Mode = 'HitsToKill' | 'TimeToKill' | 'About' | 'CostEffectiveness';
