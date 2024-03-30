@@ -183,10 +183,6 @@ export class Unit {
       return false;
     }
 
-    if (this.config.targetsAirOnly && !target.config.tags.includes(Tag.Flying)) {
-      return false;
-    }
-
-    return true;
+    return !(this.config.targetsAirOnly && !target.config.tags.includes(Tag.Flying));
   }
 }
