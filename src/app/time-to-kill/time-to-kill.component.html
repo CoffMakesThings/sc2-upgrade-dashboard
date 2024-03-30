@@ -3,7 +3,7 @@
     <th mat-header-cell *matHeaderCellDef>Hits to kill opponent</th>
     <td mat-cell *matCellDef="let unitComparison">
       <div *ngIf="unitComparison.unit1.canAttack(unitComparison.unit2)" class="flex flex-row flex-1 h-5 gap-[1px]">
-        <div class="w-full h-full neutral-bg text-center"></div>
+        <div class="flex-1 h-full neutral-bg text-center"></div>
         <div class="w-full h-full neutral-bg text-center" [style]="'width: ' + getPercentDiff(unitComparison.unit1RawTime, unitComparison.unit1UpgradedTime) + '%'"
              [ngClass]="{
               'bad-bg opacity-80': unitComparison.unit1RawTime < unitComparison.unit1UpgradedTime,
@@ -74,7 +74,7 @@
               'good-bg opacity-80': unitComparison.unit2RawTime > unitComparison.unit2UpgradedTime
             }">
         </div>
-        <div class="w-full h-full neutral-bg text-center"></div>
+        <div class="flex-1 h-full neutral-bg text-center"></div>
       </div>
     </td>
   </ng-container>
