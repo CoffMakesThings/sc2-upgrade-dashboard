@@ -44,6 +44,7 @@ describe('AppComponent', () => {
     const hydralisk: Unit = units.find(u => u.config.name === 'Hydralisk')!;
     const marine: Unit = units.find(u => u.config.name === 'Marine')!;
     const marauder: Unit = units.find(u => u.config.name === 'Marauder')!;
+    const sentry: Unit = units.find(u => u.config.name === 'Sentry')!;
     const roach: Unit = units.find(u => u.config.name === 'Roach')!;
     const vikingFighter: Unit = units.find(u => u.config.name === 'Viking Fighter')!;
     const hellion: Unit = units.find(u => u.config.name === 'Hellion')!;
@@ -67,8 +68,8 @@ describe('AppComponent', () => {
     const colossus: Unit = units.find(u => u.config.name === 'Colossus')!;
     const carrier: Unit = units.find(u => u.config.name === 'Carrier')!;
 
-    let upgradesA: Upgrades = JSON.parse(JSON.stringify(baseUpgrades));
-    let upgradesB: Upgrades = JSON.parse(JSON.stringify(baseUpgrades));
+    let upgradesA: Upgrades = structuredClone(baseUpgrades);
+    let upgradesB: Upgrades = structuredClone(baseUpgrades);
 
     // Hydra on Marine
     expect(hydralisk.getRawHits(marine)).toEqual(4);
@@ -205,14 +206,14 @@ describe('AppComponent', () => {
     upgradesB.armor = 3;
     upgradesA.infernalPreigniter = true;
     expect(hellbat.getUpgradedHits(zergling, upgradesA, upgradesB)).toEqual(2);
-    upgradesA = JSON.parse(JSON.stringify(baseUpgrades));
-    upgradesB = JSON.parse(JSON.stringify(baseUpgrades));
+    upgradesA = structuredClone(baseUpgrades);
+    upgradesB = structuredClone(baseUpgrades);
 
     // Marine vs +0/3 Battlecruiser
     upgradesB.armor = 3;
     expect(marine.getUpgradedHits(battleCruiser, upgradesA, upgradesB)).toEqual(1100);
-    upgradesA = JSON.parse(JSON.stringify(baseUpgrades));
-    upgradesB = JSON.parse(JSON.stringify(baseUpgrades));
+    upgradesA = structuredClone(baseUpgrades);
+    upgradesB = structuredClone(baseUpgrades);
 
     // Carrier vs marauder
     expect(carrier.getRawHits(marauder)).toEqual(16);
@@ -222,7 +223,15 @@ describe('AppComponent', () => {
     expect(carrier.getUpgradedHits(marauder, upgradesA, upgradesB)).toEqual(11);
     upgradesA.weapons = 3;
     expect(carrier.getUpgradedHits(marauder, upgradesA, upgradesB)).toEqual(9);
-    upgradesA = JSON.parse(JSON.stringify(baseUpgrades));
-    upgradesB = JSON.parse(JSON.stringify(baseUpgrades));
+    upgradesA = structuredClone(baseUpgrades);
+    upgradesB = structuredClone(baseUpgrades);
+
+    // Marauder vs sentry
+    expect(marauder.getRawHits(sentry)).toEqual(9);
+    upgradesB.guardianShield = true;
+    expect(marauder.getUpgradedHits(sentry, upgradesA, upgradesB)).toEqual(11);
+    upgradesB.guardianShield = false;
+    upgradesB.antiArmorMissile = true;
+    expect(marauder.getUpgradedHits(sentry, upgradesA, upgradesB)).toEqual(7);
   });
 });

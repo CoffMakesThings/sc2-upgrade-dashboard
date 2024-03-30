@@ -13,7 +13,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Biological,
       Tag.Mechanical
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 0
   },
   {
     name: 'Marine',
@@ -25,7 +26,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Light,
       Tag.Biological
-    ]
+    ],
+    range: 2
   },
   {
     name: 'Reaper',
@@ -38,7 +40,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Light, Tag.Biological
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Marauder',
@@ -54,7 +57,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Armored,
     bonusDamage: 10,
     bonusDamagePerUpgrade: 1,
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Ghost',
@@ -65,7 +69,8 @@ export const unitConfigs: UnitConfig[] = [
     cooldown: 1.07,
     tags: [
       Tag.Biological
-    ]
+    ],
+    range: 2
   },
   {
     name: 'Hellbat',
@@ -79,7 +84,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Light,
       Tag.Mechanical
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Hellion',
@@ -95,7 +101,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Light,
     bonusDamagePerUpgrade: 1,
     bonusDamage: 6,
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Widow Mine',
@@ -110,7 +117,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Light,
     bonusDamagePerUpgrade: 1,
-    bonusDamage: 6
+    bonusDamage: 6,
+    range: 2
   },
   {
     name: 'Cyclone',
@@ -122,7 +130,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Armored,
       Tag.Mechanical
-    ]
+    ],
+    range: 2
   },
   {
     name: 'Tank',
@@ -139,7 +148,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Armored,
     bonusDamage: 10,
     bonusDamagePerUpgrade: 1,
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Siege Tank',
@@ -156,7 +166,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Armored,
     bonusDamage: 30,
     bonusDamagePerUpgrade: 1,
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Thor',
@@ -172,7 +183,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Mechanical,
       Tag.Massive
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Banshee',
@@ -187,7 +199,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Mechanical,
       Tag.Flying
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Liberator',
@@ -201,7 +214,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Mechanical,
       Tag.Flying
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Viking Fighter',
@@ -219,7 +233,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Armored,
     bonusDamage: 4,
     bonusDamagePerUpgrade: 0,
-    targetsAirOnly: true
+    targetsAirOnly: true,
+    range: 2
   },
   {
     name: 'Viking Assault',
@@ -236,7 +251,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Mechanical,
     bonusDamage: 8,
     bonusDamagePerUpgrade: 1,
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Battlecruiser',
@@ -252,7 +268,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Armored,
       Tag.Flying
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Drone',
@@ -264,7 +281,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Light, Tag.Biological
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 0
   },
   {
     name: 'Zergling',
@@ -276,7 +294,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Light, Tag.Biological
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 0
   },
   {
     name: 'Roach',
@@ -289,7 +308,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Armored, Tag.Biological
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Queen',
@@ -303,7 +323,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Biological
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Baneling',
@@ -318,7 +339,8 @@ export const unitConfigs: UnitConfig[] = [
     targetsGroundOnly: true,
     bonusTag: Tag.Light,
     bonusDamage: 19,
-    bonusDamagePerUpgrade: 0
+    bonusDamagePerUpgrade: 0,
+    range: 0
   },
   {
     name: 'Ravager',
@@ -331,7 +353,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Biological
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Hydralisk',
@@ -343,7 +366,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Biological,
       Tag.Light
-    ]
+    ],
+    range: 2
   },
   {
     name: 'Lurker',
@@ -360,7 +384,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Armored,
     bonusDamage: 10,
     bonusDamagePerUpgrade: 1,
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Mutalisk',
@@ -373,7 +398,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Biological,
       Tag.Light,
       Tag.Flying
-    ]
+    ],
+    range: 2
   },
   {
     name: 'Corruptor',
@@ -391,7 +417,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Massive,
     bonusDamage: 6,
     bonusDamagePerUpgrade: 1,
-    targetsAirOnly: true
+    targetsAirOnly: true,
+    range: 2
   },
   {
     name: 'Locust',
@@ -404,7 +431,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Light,
       Tag.Biological
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Ultralisk',
@@ -419,7 +447,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Biological,
       Tag.Massive
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 0
   },
   {
     name: 'Probe',
@@ -432,7 +461,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Light, Tag.Mechanical
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 0
   },
   {
     name: 'Zealot',
@@ -447,7 +477,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Light
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 0
   },
   {
     name: 'Stalker',
@@ -464,7 +495,22 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Armored,
     bonusDamage: 5,
-    bonusDamagePerUpgrade: 1
+    bonusDamagePerUpgrade: 1,
+    range: 2
+  },
+  {
+    name: 'Sentry',
+    race: Race.Protoss,
+    hp: 40,
+    armor: 1,
+    shields: 40,
+    damage: 6,
+    damagePerUpgrade: 1,
+    cooldown: 0.71,
+    tags: [
+      Tag.Mechanical
+    ],
+    range: 2
   },
   {
     name: 'Adept',
@@ -481,7 +527,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Light,
     bonusDamage: 12,
     bonusDamagePerUpgrade: 1,
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 0
   },
   {
     name: 'Dark Templar',
@@ -494,7 +541,8 @@ export const unitConfigs: UnitConfig[] = [
     tags: [
       Tag.Light, Tag.Biological
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 0
   },
   {
     name: 'Archon',
@@ -509,7 +557,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Biological,
     bonusDamage: 10,
-    bonusDamagePerUpgrade: 1
+    bonusDamagePerUpgrade: 1,
+    range: 0
   },
   {
     name: 'Immortal',
@@ -527,7 +576,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Armored,
     bonusDamage: 30,
     bonusDamagePerUpgrade: 3,
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Colossus',
@@ -547,7 +597,8 @@ export const unitConfigs: UnitConfig[] = [
     bonusTag: Tag.Light,
     bonusDamage: 5,
     bonusDamagePerUpgrade: 1,
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   },
   {
     name: 'Phoenix',
@@ -565,7 +616,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Light,
     bonusDamage: 5,
-    bonusDamagePerUpgrade: 1
+    bonusDamagePerUpgrade: 1,
+    range: 2
   },
   {
     name: 'Void Ray',
@@ -582,7 +634,8 @@ export const unitConfigs: UnitConfig[] = [
     ],
     bonusTag: Tag.Armored,
     bonusDamage: 4,
-    bonusDamagePerUpgrade: 1
+    bonusDamagePerUpgrade: 1,
+    range: 2
   },
   {
     name: 'Carrier',
@@ -598,7 +651,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Mechanical,
       Tag.Massive,
       Tag.Flying
-    ]
+    ],
+    range: 2
   },
   {
     name: 'Tempest',
@@ -614,7 +668,8 @@ export const unitConfigs: UnitConfig[] = [
       Tag.Massive,
       Tag.Flying
     ],
-    targetsGroundOnly: true
+    targetsGroundOnly: true,
+    range: 2
   }
 ]
 
@@ -630,7 +685,8 @@ export const secondaryUnitConfigs: UnitConfig[] = [
     tags: [
       Tag.Biological
     ],
-    targetsAirOnly: true
+    targetsAirOnly: true,
+    range: 2
   },
   {
     name: 'Battlecruiser',
@@ -646,7 +702,8 @@ export const secondaryUnitConfigs: UnitConfig[] = [
       Tag.Armored,
       Tag.Flying
     ],
-    targetsAirOnly: true
+    targetsAirOnly: true,
+    range: 2
   },
   {
     name: 'Tempest',
@@ -665,7 +722,8 @@ export const secondaryUnitConfigs: UnitConfig[] = [
     bonusTag: Tag.Massive,
     bonusDamage: 22,
     bonusDamagePerUpgrade: 2,
-    targetsAirOnly: true
+    targetsAirOnly: true,
+    range: 2
   },
   {
     name: 'Thor',
@@ -683,7 +741,8 @@ export const secondaryUnitConfigs: UnitConfig[] = [
     bonusTag: Tag.Massive,
     bonusDamage: 10,
     bonusDamagePerUpgrade: 1,
-    targetsAirOnly: true
+    targetsAirOnly: true,
+    range: 2
   },
   {
     name: 'Liberator',
@@ -698,6 +757,7 @@ export const secondaryUnitConfigs: UnitConfig[] = [
       Tag.Mechanical,
       Tag.Flying
     ],
-    targetsAirOnly: true
-  },
+    targetsAirOnly: true,
+    range: 2
+  }
 ]

@@ -2,7 +2,7 @@
   <mat-tab-group class="min-w-[600px]" (selectedIndexChange)="onTabChange($event)">
     <mat-tab label="Hits to Kill"></mat-tab>
     <mat-tab label="Time to Kill"></mat-tab>
-<!--    <mat-tab label="Cost Effectiveness"></mat-tab>-->
+    <!--    <mat-tab label="Cost Effectiveness"></mat-tab>-->
   </mat-tab-group>
   <button class="theme-button" *ngIf="!darkMode" mat-button (click)="darkModeEmitter.emit()">
     <div class="flex flex-row h-[48px] justify-center items-center gap-4 px-2">
@@ -23,9 +23,12 @@
     <div class="w-[50%]">
       <b>My race</b>
       <div class="flex flex-row gap-1">
-        <img matTooltip="Terran" class="race-button" [ngClass]="{'fade': raceA != Race.Terran }" src="assets/TerranIcon.png" (click)="onRaceAClick(Race.Terran)"/>
-        <img matTooltip="Zerg" class="race-button" [ngClass]="{'fade': raceA != Race.Zerg }" src="assets/ZergIcon.png" (click)="onRaceAClick(Race.Zerg)"/>
-        <img matTooltip="Protoss" class="race-button" [ngClass]="{'fade': raceA != Race.Protoss }" src="assets/ProtossIcon.png" (click)="onRaceAClick(Race.Protoss)"/>
+        <img matTooltip="Terran" class="race-button" [ngClass]="{'fade': raceA != Race.Terran }"
+             src="assets/TerranIcon.png" (click)="onRaceAClick(Race.Terran)"/>
+        <img matTooltip="Zerg" class="race-button" [ngClass]="{'fade': raceA != Race.Zerg }" src="assets/ZergIcon.png"
+             (click)="onRaceAClick(Race.Zerg)"/>
+        <img matTooltip="Protoss" class="race-button" [ngClass]="{'fade': raceA != Race.Protoss }"
+             src="assets/ProtossIcon.png" (click)="onRaceAClick(Race.Protoss)"/>
       </div>
     </div>
     <div class="w-[50%]">
@@ -33,9 +36,12 @@
         <b>Opponent race</b>
       </div>
       <div class="flex flex-row justify-end gap-1">
-        <img matTooltip="Terran" class="race-button" [ngClass]="{'fade': raceB != Race.Terran }" src="assets/TerranIcon.png" (click)="onRaceBClick(Race.Terran)"/>
-        <img matTooltip="Zerg" class="race-button" [ngClass]="{'fade': raceB != Race.Zerg }" src="assets/ZergIcon.png" (click)="onRaceBClick(Race.Zerg)"/>
-        <img matTooltip="Protoss" class="race-button" [ngClass]="{'fade': raceB != Race.Protoss }" src="assets/ProtossIcon.png" (click)="onRaceBClick(Race.Protoss)"/>
+        <img matTooltip="Terran" class="race-button" [ngClass]="{'fade': raceB != Race.Terran }"
+             src="assets/TerranIcon.png" (click)="onRaceBClick(Race.Terran)"/>
+        <img matTooltip="Zerg" class="race-button" [ngClass]="{'fade': raceB != Race.Zerg }" src="assets/ZergIcon.png"
+             (click)="onRaceBClick(Race.Zerg)"/>
+        <img matTooltip="Protoss" class="race-button" [ngClass]="{'fade': raceB != Race.Protoss }"
+             src="assets/ProtossIcon.png" (click)="onRaceBClick(Race.Protoss)"/>
       </div>
     </div>
   </div>
@@ -44,20 +50,44 @@
     <div class="w-[50%]">
       <b>My upgrades</b>
       <div class="flex flex-row flex-wrap gap-1">
-        <img class="race-button" matTooltip="Weapons 1" [ngClass]="{'fade': upgradesA.weapons != 1 }" [src]="assetsConfigA.attack1" (click)="onWeaponClick(1, upgradesA)"/>
-        <img class="race-button" matTooltip="Weapons 2" [ngClass]="{'fade': upgradesA.weapons != 2 }" [src]="assetsConfigA.attack2" (click)="onWeaponClick(2, upgradesA)"/>
-        <img class="race-button" matTooltip="Weapons 3" [ngClass]="{'fade': upgradesA.weapons != 3 }" [src]="assetsConfigA.attack3" (click)="onWeaponClick(3, upgradesA)"/>
-        <img class="race-button" matTooltip="Armor 1" [ngClass]="{'fade': upgradesA.armor != 1 }" [src]="assetsConfigA.armor1" (click)="onArmorClick(1, upgradesA)"/>
-        <img class="race-button" matTooltip="Armor 2" [ngClass]="{'fade': upgradesA.armor != 2 }" [src]="assetsConfigA.armor2" (click)="onArmorClick(2, upgradesA)"/>
-        <img class="race-button" matTooltip="Armor 3" [ngClass]="{'fade': upgradesA.armor != 3 }" [src]="assetsConfigA.armor3" (click)="onArmorClick(3, upgradesA)"/>
-        <img *ngIf="raceA === Race.Protoss" class="race-button" matTooltip="Shields 1" [ngClass]="{'fade': upgradesA.shields != 1 }" src="assets/Shields_1.gif" (click)="onShieldsClick(1, upgradesA)"/>
-        <img *ngIf="raceA === Race.Protoss" class="race-button" matTooltip="Shields 2" [ngClass]="{'fade': upgradesA.shields != 2 }" src="assets/Shields_2.gif" (click)="onShieldsClick(2, upgradesA)"/>
-        <img *ngIf="raceA === Race.Protoss" class="race-button" matTooltip="Shields 3" [ngClass]="{'fade': upgradesA.shields != 3 }" src="assets/Shields_3.gif" (click)="onShieldsClick(3, upgradesA)"/>
-        <img *ngIf="raceA === Race.Terran" class="race-button" matTooltip="{{'Combat shields\nMarine HP +10'}}" [ngClass]="{'fade': !upgradesA.combatShields }" src="assets/60px-Combat_Shield.png" (click)="onCombatShieldsClick(upgradesA)"/>
-        <img *ngIf="raceA === Race.Zerg" class="race-button" matTooltip="{{'Chitinous plating\nUltralisk armor +2'}}" [ngClass]="{'fade': !upgradesA.chitinousPlating }" src="assets/Chitinous_Plating.gif" (click)="onChitinousPlatingClick(upgradesA)"/>
-        <img *ngIf="raceA === Race.Terran" class="race-button" matTooltip="{{'Infernal preigniter\nHellion +5 dmg vs Light\nHellbat +12 dmg vs Light'}}" [ngClass]="{'fade': !upgradesA.infernalPreigniter }" src="assets/InfernalPreigniter.gif" (click)="onInfernalPreigniterClick(upgradesA)"/>
-        <img *ngIf="raceA === Race.Protoss && mode != 'HitsToKill'" class="race-button" matTooltip="{{'Resonating glaives\nAdept +45% attack speed'}}" [ngClass]="{'fade': !upgradesA.resonatingGlaives }" src="assets/Resonating_Glaives.png" (click)="onResonatingGlaivesClick(upgradesA)"/>
-        <img *ngIf="raceA === Race.Zerg && mode != 'HitsToKill'" class="race-button" matTooltip="{{'Adrenal glands\nZergling -0.15 cooldown'}}" [ngClass]="{'fade': !upgradesA.adrenalGlands }" src="assets/Adrenal_glands.gif" (click)="onAdrenalGlandsClick(upgradesA)"/>
+        <img class="race-button" matTooltip="Weapons 1" [ngClass]="{'fade': upgradesA.weapons != 1 }"
+             [src]="assetsConfigA.attack1" (click)="onWeaponClick(1, upgradesA)"/>
+        <img class="race-button" matTooltip="Weapons 2" [ngClass]="{'fade': upgradesA.weapons != 2 }"
+             [src]="assetsConfigA.attack2" (click)="onWeaponClick(2, upgradesA)"/>
+        <img class="race-button" matTooltip="Weapons 3" [ngClass]="{'fade': upgradesA.weapons != 3 }"
+             [src]="assetsConfigA.attack3" (click)="onWeaponClick(3, upgradesA)"/>
+        <img class="race-button" matTooltip="Armor 1" [ngClass]="{'fade': upgradesA.armor != 1 }"
+             [src]="assetsConfigA.armor1" (click)="onArmorClick(1, upgradesA)"/>
+        <img class="race-button" matTooltip="Armor 2" [ngClass]="{'fade': upgradesA.armor != 2 }"
+             [src]="assetsConfigA.armor2" (click)="onArmorClick(2, upgradesA)"/>
+        <img class="race-button" matTooltip="Armor 3" [ngClass]="{'fade': upgradesA.armor != 3 }"
+             [src]="assetsConfigA.armor3" (click)="onArmorClick(3, upgradesA)"/>
+        <img *ngIf="raceA === Race.Protoss" class="race-button" matTooltip="Shields 1"
+             [ngClass]="{'fade': upgradesA.shields != 1 }" src="assets/Shields_1.gif"
+             (click)="onShieldsClick(1, upgradesA)"/>
+        <img *ngIf="raceA === Race.Protoss" class="race-button" matTooltip="Shields 2"
+             [ngClass]="{'fade': upgradesA.shields != 2 }" src="assets/Shields_2.gif"
+             (click)="onShieldsClick(2, upgradesA)"/>
+        <img *ngIf="raceA === Race.Protoss" class="race-button" matTooltip="Shields 3"
+             [ngClass]="{'fade': upgradesA.shields != 3 }" src="assets/Shields_3.gif"
+             (click)="onShieldsClick(3, upgradesA)"/>
+        <img *ngIf="raceA === Race.Terran" class="race-button" matTooltip="{{'Combat shields\nMarine HP +10'}}"
+             [ngClass]="{'fade': !upgradesA.combatShields }" src="assets/60px-Combat_Shield.png"
+             (click)="onCombatShieldsClick(upgradesA)"/>
+        <img *ngIf="raceA === Race.Zerg" class="race-button" matTooltip="{{'Chitinous plating\nUltralisk armor +2'}}"
+             [ngClass]="{'fade': !upgradesA.chitinousPlating }" src="assets/Chitinous_Plating.gif"
+             (click)="onChitinousPlatingClick(upgradesA)"/>
+        <img *ngIf="raceA === Race.Terran" class="race-button"
+             matTooltip="{{'Infernal preigniter\nHellion +5 dmg vs Light\nHellbat +12 dmg vs Light'}}"
+             [ngClass]="{'fade': !upgradesA.infernalPreigniter }" src="assets/InfernalPreigniter.gif"
+             (click)="onInfernalPreigniterClick(upgradesA)"/>
+        <img *ngIf="raceA === Race.Protoss && mode != 'HitsToKill'" class="race-button"
+             matTooltip="{{'Resonating glaives\nAdept +45% attack speed'}}"
+             [ngClass]="{'fade': !upgradesA.resonatingGlaives }" src="assets/Resonating_Glaives.png"
+             (click)="onResonatingGlaivesClick(upgradesA)"/>
+        <img *ngIf="raceA === Race.Zerg && mode != 'HitsToKill'" class="race-button"
+             matTooltip="{{'Adrenal glands\nZergling -0.15 cooldown'}}" [ngClass]="{'fade': !upgradesA.adrenalGlands }"
+             src="assets/Adrenal_glands.gif" (click)="onAdrenalGlandsClick(upgradesA)"/>
       </div>
     </div>
     <div class="w-[50%]">
@@ -65,20 +95,71 @@
         <b>Opponent upgrades</b>
       </div>
       <div class="flex flex-row flex-wrap justify-end gap-1">
-        <img class="race-button" matTooltip="Weapons 1" [ngClass]="{'fade': upgradesB.weapons != 1 }" [src]="assetsConfigB.attack1" (click)="onWeaponClick(1, upgradesB)"/>
-        <img class="race-button" matTooltip="Weapons 2" [ngClass]="{'fade': upgradesB.weapons != 2 }" [src]="assetsConfigB.attack2" (click)="onWeaponClick(2, upgradesB)"/>
-        <img class="race-button" matTooltip="Weapons 3" [ngClass]="{'fade': upgradesB.weapons != 3 }" [src]="assetsConfigB.attack3" (click)="onWeaponClick(3, upgradesB)"/>
-        <img class="race-button" matTooltip="Armor 1" [ngClass]="{'fade': upgradesB.armor != 1 }" [src]="assetsConfigB.armor1" (click)="onArmorClick(1, upgradesB)"/>
-        <img class="race-button" matTooltip="Armor 2" [ngClass]="{'fade': upgradesB.armor != 2 }" [src]="assetsConfigB.armor2" (click)="onArmorClick(2, upgradesB)"/>
-        <img class="race-button" matTooltip="Armor 3" [ngClass]="{'fade': upgradesB.armor != 3 }" [src]="assetsConfigB.armor3" (click)="onArmorClick(3, upgradesB)"/>
-        <img *ngIf="raceB === Race.Protoss" class="race-button" matTooltip="Shields 1" [ngClass]="{'fade': upgradesB.shields != 1 }" src="assets/Shields_1.gif" (click)="onShieldsClick(1, upgradesB)"/>
-        <img *ngIf="raceB === Race.Protoss" class="race-button" matTooltip="Shields 2" [ngClass]="{'fade': upgradesB.shields != 2 }" src="assets/Shields_2.gif" (click)="onShieldsClick(2, upgradesB)"/>
-        <img *ngIf="raceB === Race.Protoss" class="race-button" matTooltip="Shields 3" [ngClass]="{'fade': upgradesB.shields != 3 }" src="assets/Shields_3.gif" (click)="onShieldsClick(3, upgradesB)"/>
-        <img *ngIf="raceB === Race.Terran" class="race-button" matTooltip="{{'Combat shields\nMarine HP +10'}}" [ngClass]="{'fade': !upgradesB.combatShields }" src="assets/60px-Combat_Shield.png" (click)="onCombatShieldsClick(upgradesB)"/>
-        <img *ngIf="raceB === Race.Zerg" class="race-button" matTooltip="{{'Chitinous plating\nUltralisk armor +2'}}" [ngClass]="{'fade': !upgradesB.chitinousPlating }" src="assets/Chitinous_Plating.gif" (click)="onChitinousPlatingClick(upgradesB)"/>
-        <img *ngIf="raceB === Race.Terran" class="race-button" matTooltip="{{'Infernal preigniter\nHellion +5 dmg vs Light\nHellbat +12 dmg vs Light'}}" [ngClass]="{'fade': !upgradesB.infernalPreigniter }" src="assets/InfernalPreigniter.gif" (click)="onInfernalPreigniterClick(upgradesB)"/>
-        <img *ngIf="raceB === Race.Protoss && mode != 'HitsToKill'" class="race-button" matTooltip="{{'Resonating glaives\nAdept +45% attack speed'}}" [ngClass]="{'fade': !upgradesB.resonatingGlaives }" src="assets/Resonating_Glaives.png" (click)="onResonatingGlaivesClick(upgradesB)"/>
-        <img *ngIf="raceB === Race.Zerg && mode != 'HitsToKill'" class="race-button" matTooltip="{{'Adrenal glands\nZergling -0.15 cooldown'}}" [ngClass]="{'fade': !upgradesB.adrenalGlands }" src="assets/Adrenal_glands.gif" (click)="onAdrenalGlandsClick(upgradesB)"/>
+        <img class="race-button" matTooltip="Weapons 1" [ngClass]="{'fade': upgradesB.weapons != 1 }"
+             [src]="assetsConfigB.attack1" (click)="onWeaponClick(1, upgradesB)"/>
+        <img class="race-button" matTooltip="Weapons 2" [ngClass]="{'fade': upgradesB.weapons != 2 }"
+             [src]="assetsConfigB.attack2" (click)="onWeaponClick(2, upgradesB)"/>
+        <img class="race-button" matTooltip="Weapons 3" [ngClass]="{'fade': upgradesB.weapons != 3 }"
+             [src]="assetsConfigB.attack3" (click)="onWeaponClick(3, upgradesB)"/>
+        <img class="race-button" matTooltip="Armor 1" [ngClass]="{'fade': upgradesB.armor != 1 }"
+             [src]="assetsConfigB.armor1" (click)="onArmorClick(1, upgradesB)"/>
+        <img class="race-button" matTooltip="Armor 2" [ngClass]="{'fade': upgradesB.armor != 2 }"
+             [src]="assetsConfigB.armor2" (click)="onArmorClick(2, upgradesB)"/>
+        <img class="race-button" matTooltip="Armor 3" [ngClass]="{'fade': upgradesB.armor != 3 }"
+             [src]="assetsConfigB.armor3" (click)="onArmorClick(3, upgradesB)"/>
+        <img *ngIf="raceB === Race.Protoss" class="race-button" matTooltip="Shields 1"
+             [ngClass]="{'fade': upgradesB.shields != 1 }" src="assets/Shields_1.gif"
+             (click)="onShieldsClick(1, upgradesB)"/>
+        <img *ngIf="raceB === Race.Protoss" class="race-button" matTooltip="Shields 2"
+             [ngClass]="{'fade': upgradesB.shields != 2 }" src="assets/Shields_2.gif"
+             (click)="onShieldsClick(2, upgradesB)"/>
+        <img *ngIf="raceB === Race.Protoss" class="race-button" matTooltip="Shields 3"
+             [ngClass]="{'fade': upgradesB.shields != 3 }" src="assets/Shields_3.gif"
+             (click)="onShieldsClick(3, upgradesB)"/>
+        <img *ngIf="raceB === Race.Terran" class="race-button" matTooltip="{{'Combat shields\nMarine HP +10'}}"
+             [ngClass]="{'fade': !upgradesB.combatShields }" src="assets/60px-Combat_Shield.png"
+             (click)="onCombatShieldsClick(upgradesB)"/>
+        <img *ngIf="raceB === Race.Zerg" class="race-button" matTooltip="{{'Chitinous plating\nUltralisk armor +2'}}"
+             [ngClass]="{'fade': !upgradesB.chitinousPlating }" src="assets/Chitinous_Plating.gif"
+             (click)="onChitinousPlatingClick(upgradesB)"/>
+        <img *ngIf="raceB === Race.Terran" class="race-button"
+             matTooltip="{{'Infernal preigniter\nHellion +5 dmg vs Light\nHellbat +12 dmg vs Light'}}"
+             [ngClass]="{'fade': !upgradesB.infernalPreigniter }" src="assets/InfernalPreigniter.gif"
+             (click)="onInfernalPreigniterClick(upgradesB)"/>
+        <img *ngIf="raceB === Race.Protoss && mode != 'HitsToKill'" class="race-button"
+             matTooltip="{{'Resonating glaives\nAdept +45% attack speed'}}"
+             [ngClass]="{'fade': !upgradesB.resonatingGlaives }" src="assets/Resonating_Glaives.png"
+             (click)="onResonatingGlaivesClick(upgradesB)"/>
+        <img *ngIf="raceB === Race.Zerg && mode != 'HitsToKill'" class="race-button"
+             matTooltip="{{'Adrenal glands\nZergling -0.15 cooldown'}}" [ngClass]="{'fade': !upgradesB.adrenalGlands }"
+             src="assets/Adrenal_glands.gif" (click)="onAdrenalGlandsClick(upgradesB)"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row mb-1.5">
+    <div class="w-[50%]">
+      <b>My units are affected by</b>
+      <div class="flex flex-row flex-wrap gap-1">
+        <img class="race-button" matTooltip="{{'Guardian shield\n-2 incoming ranged damage'}}"
+             [ngClass]="{'fade': !upgradesA.guardianShield }" src="assets/Guardian_shield.jpg"
+             (click)="upgradesA.guardianShield = !upgradesA.guardianShield; refresh()"/>
+        <img class="race-button" matTooltip="{{'Anti armor missile\n-2 armor'}}"
+             [ngClass]="{'fade': !upgradesA.antiArmorMissile }" src="assets/Anti-Armor_Missile.png"
+             (click)="upgradesA.antiArmorMissile = !upgradesA.antiArmorMissile; refresh()"/>
+      </div>
+    </div>
+    <div class="w-[50%]">
+      <div class="flex flex-row justify-end">
+        <b>Opponent's units are affected by</b>
+      </div>
+      <div class="flex flex-row flex-wrap justify-end gap-1">
+        <img class="race-button" matTooltip="{{'Guardian shield\n-2 incoming ranged damage'}}"
+             [ngClass]="{'fade': !upgradesB.guardianShield }" src="assets/Guardian_shield.jpg"
+             (click)="upgradesB.guardianShield = !upgradesB.guardianShield; refresh()"/>
+        <img class="race-button" matTooltip="{{'Anti armor missile\n-2 armor'}}"
+             [ngClass]="{'fade': !upgradesB.antiArmorMissile }" src="assets/Anti-Armor_Missile.png"
+             (click)="upgradesB.antiArmorMissile = !upgradesB.antiArmorMissile; refresh()"/>
       </div>
     </div>
   </div>
@@ -88,7 +169,8 @@
       <b>Units</b>
       <div class="flex flex-row flex-wrap gap-1">
         <img *ngFor="let unit of getUnitsOfRace(raceA)" class="race-button" matTooltip="{{unit.config.name}}"
-             [ngClass]="{'fade': !unit.enabledForA }" src="assets/{{unit.config.name}}.png" (click)="onToggleUnitA(unit)"/>
+             [ngClass]="{'fade': !unit.enabledForA }" src="assets/{{unit.config.name}}.png"
+             (click)="onToggleUnitA(unit)"/>
       </div>
     </div>
     <div class="w-[50%]">
@@ -97,7 +179,8 @@
       </div>
       <div class="flex flex-row flex-wrap justify-end gap-1">
         <img *ngFor="let unit of getUnitsOfRace(raceB)" class="race-button" matTooltip="{{unit.config.name}}"
-             [ngClass]="{'fade': !unit.enabledForB }" src="assets/{{unit.config.name}}.png" (click)="onToggleUnitB(unit)"/>
+             [ngClass]="{'fade': !unit.enabledForB }" src="assets/{{unit.config.name}}.png"
+             (click)="onToggleUnitB(unit)"/>
       </div>
     </div>
   </div>

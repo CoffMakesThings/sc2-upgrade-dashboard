@@ -16,6 +16,7 @@ export interface UnitConfig {
   bonusDamagePerUpgrade?: number;
   targetsGroundOnly?: boolean;
   targetsAirOnly?: boolean;
+  range: number;
 }
 
 export interface HitsToKillComparison {
