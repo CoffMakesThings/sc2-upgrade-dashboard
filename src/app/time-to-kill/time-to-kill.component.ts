@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTableModule } from "@angular/material/table";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { DecimalPipe, NgClass, NgForOf, NgIf } from "@angular/common";
+import { DecimalPipe, NgClass, NgForOf, NgIf, NgStyle } from "@angular/common";
 import { Race, HitsToKillComparison, Upgrades, TimeToKillComparison } from "../app.types";
 import { Unit } from "../unit";
 import { secondaryUnitConfigs } from "../units.config";
@@ -15,7 +15,8 @@ import { secondaryUnitConfigs } from "../units.config";
     NgForOf,
     NgIf,
     NgClass,
-    DecimalPipe
+    DecimalPipe,
+    NgStyle
   ],
   templateUrl: './time-to-kill.component.html',
   styleUrl: './time-to-kill.component.scss'
