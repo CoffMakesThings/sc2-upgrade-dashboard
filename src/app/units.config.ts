@@ -123,10 +123,10 @@ export const unitConfigs: UnitConfig[] = [
   {
     name: 'Cyclone',
     race: Race.Terran,
-    hp: 110,
+    hp: 130,
     damage: 11,
     damagePerUpgrade: 1,
-    cooldown: 0.481,
+    cooldown: 0.58,
     tags: [
       Tag.Armored,
       Tag.Mechanical
